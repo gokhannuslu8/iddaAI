@@ -1,0 +1,2283 @@
+PREMIER LİG MAÇLARI
+==================================================
+
+Tarih: 2024-08-16T19:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-08-17T11:30:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-17T14:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-08-17T14:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-08-17T14:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-08-17T14:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-17T16:30:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-08-18T13:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-08-18T15:30:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-19T19:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-24T11:30:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-08-24T14:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-24T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-08-24T14:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-08-24T14:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-08-24T14:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-08-24T16:30:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-25T13:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-25T13:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 2 - 6
+------------------------
+Tarih: 2024-08-25T15:30:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-08-31T11:30:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-31T14:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-08-31T14:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-08-31T14:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-31T14:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-08-31T14:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-31T16:30:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-09-01T12:30:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-01T12:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-09-01T15:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-14T11:30:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-14T14:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-09-14T14:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-14T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-14T14:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-09-14T14:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-09-14T16:30:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-09-14T19:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-09-15T13:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-09-15T15:30:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-09-21T11:30:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-21T14:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-09-21T16:30:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-09-22T13:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-22T15:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-28T11:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-28T14:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-09-28T14:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-28T14:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-09-28T14:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-09-28T14:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-09-28T16:30:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-09-29T13:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-29T15:30:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-30T19:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-10-05T11:30:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-10-05T14:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-10-05T14:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 5 - 3
+------------------------
+Tarih: 2024-10-05T14:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-10-05T14:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-10-05T14:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-10-05T16:30:00Z
+Ev Sahibi: Everton FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-10-06T13:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-10-06T13:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-06T15:30:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-10-19T11:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-10-19T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-10-19T14:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-10-19T14:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-19T14:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-10-19T14:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-10-19T16:30:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-10-20T13:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-10-20T15:30:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-21T19:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-10-25T19:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-10-26T14:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-26T14:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 4 - 3
+------------------------
+Tarih: 2024-10-26T14:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-10-26T14:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-10-26T16:30:00Z
+Ev Sahibi: Everton FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-27T14:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-27T14:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-10-27T14:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-27T16:30:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-11-02T12:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-02T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-02T15:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-02T15:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-02T15:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-11-02T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-02T17:30:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-11-03T14:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-11-03T16:30:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-04T20:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-09T15:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-11-09T15:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-11-09T15:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-09T15:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-11-09T17:30:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-09T20:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-11-10T14:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-11-10T14:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-11-10T14:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-11-10T16:30:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-23T12:30:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-11-23T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-11-23T15:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-11-23T15:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-11-23T15:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-23T15:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 1 - 4
+------------------------
+Tarih: 2024-11-23T17:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 0 - 4
+------------------------
+Tarih: 2024-11-24T14:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-11-24T16:30:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-25T20:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-11-29T20:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-30T15:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-11-30T15:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-30T15:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-30T15:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 2 - 4
+------------------------
+Tarih: 2024-11-30T17:30:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 2 - 5
+------------------------
+Tarih: 2024-12-01T13:30:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-12-01T13:30:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-12-01T13:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-01T16:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-03T19:30:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-12-03T20:15:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-12-04T19:30:00Z
+Ev Sahibi: Everton FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-12-04T19:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-12-04T19:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 3 - 3
+------------------------
+Tarih: 2024-12-04T19:30:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 1 - 5
+------------------------
+Tarih: 2024-12-04T20:15:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-04T20:15:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-12-05T19:30:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-12-05T20:15:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-12-07T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Liverpool FC
+Durum: POSTPONED
+Skor: None - None
+------------------------
+Tarih: 2024-12-07T15:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-12-07T15:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-12-07T15:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-07T17:30:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-12-08T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-08T14:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-12-08T14:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-08T16:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 3 - 4
+------------------------
+Tarih: 2024-12-09T20:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-14T15:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-12-14T15:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-14T15:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-12-14T15:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-12-14T17:30:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-15T14:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-12-15T16:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-12-15T19:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-15T19:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 0 - 5
+------------------------
+Tarih: 2024-12-16T20:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-21T12:30:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-21T15:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-21T15:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 0 - 4
+------------------------
+Tarih: 2024-12-21T15:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-21T17:30:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 5
+------------------------
+Tarih: 2024-12-22T14:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-12-22T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-12-22T14:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-12-22T14:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-12-22T16:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 3 - 6
+------------------------
+Tarih: 2024-12-26T12:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-26T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Crystal Palace FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-12-26T15:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Fulham FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-12-26T15:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Aston Villa FC
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-12-26T15:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Tottenham Hotspur FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-12-26T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-12-26T17:30:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-26T20:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-12-27T19:30:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-12-27T20:15:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-12-29T14:30:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Manchester City FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-29T15:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Southampton FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-29T15:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-29T15:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: AFC Bournemouth
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-29T15:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-29T17:15:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Liverpool FC
+Durum: FINISHED
+Skor: 0 - 5
+------------------------
+Tarih: 2024-12-30T19:45:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Brighton & Hove Albion FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-30T19:45:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-30T20:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2025-01-01T17:30:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2025-01-04T12:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Newcastle United FC
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2025-01-04T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Brentford FC
+Durum: FINISHED
+Skor: 0 - 5
+------------------------
+Tarih: 2025-01-04T15:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Chelsea FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2025-01-04T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Everton FC
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2025-01-04T15:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Leicester City FC
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2025-01-04T15:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: West Ham United FC
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2025-01-04T17:30:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Arsenal FC
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2025-01-05T14:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Ipswich Town FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2025-01-05T16:30:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Manchester United FC
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2025-01-06T20:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Nottingham Forest FC
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Fulham FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Manchester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: AFC Bournemouth
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T20:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Liverpool FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: Everton FC
+Deplasman: Aston Villa FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Crystal Palace FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T20:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Tottenham Hotspur FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-16T19:30:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Brighton & Hove Albion FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-16T20:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Southampton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T12:30:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: AFC Bournemouth
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T15:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Crystal Palace FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T15:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Fulham FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T15:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Liverpool FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T17:30:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Aston Villa FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T14:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Brighton & Hove Albion FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T14:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Southampton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T14:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Tottenham Hotspur FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T16:30:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Manchester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-20T20:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T15:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Ipswich Town FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T15:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Arsenal FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T15:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Everton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Newcastle United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Nottingham Forest FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T17:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Chelsea FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T14:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Brentford FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T14:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Leicester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T16:30:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: West Ham United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T19:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Manchester United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T12:30:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Brighton & Hove Albion FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T15:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Fulham FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T15:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Leicester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Liverpool FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T15:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Southampton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T17:30:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Aston Villa FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-02T14:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Crystal Palace FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-02T14:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Tottenham Hotspur FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-02T16:30:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Manchester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-03T20:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: West Ham United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-14T20:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Chelsea FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T12:30:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Arsenal FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: AFC Bournemouth
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T15:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Brentford FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T15:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Ipswich Town FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T15:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Newcastle United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T15:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Nottingham Forest FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T17:30:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Everton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-16T14:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-16T16:30:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Manchester United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-21T20:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Brentford FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T12:30:00Z
+Ev Sahibi: Everton FC
+Deplasman: Manchester United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T15:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Tottenham Hotspur FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T15:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Crystal Palace FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T15:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: West Ham United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Wolverhampton Wanderers FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Brighton & Hove Albion FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T17:30:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Chelsea FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-23T14:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Nottingham Forest FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-23T16:30:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Liverpool FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: AFC Bournemouth
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Arsenal FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Everton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Fulham FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Manchester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T19:45:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Leicester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-25T20:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Aston Villa FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-26T19:45:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Southampton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-26T20:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Ipswich Town FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-26T20:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Newcastle United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: AFC Bournemouth
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Arsenal FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Aston Villa FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Everton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Newcastle United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Manchester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Southampton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Leicester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Brentford FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Chelsea FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Liverpool FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: West Ham United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Nottingham Forest FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Brighton & Hove Albion FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Crystal Palace FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-01T00:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-01T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-01T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Aston Villa FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-01T00:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-01T00:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: West Ham United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-02T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-02T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Leicester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-02T00:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Brentford FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-02T00:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Crystal Palace FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-02T00:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Everton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Nottingham Forest FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Chelsea FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Brighton & Hove Albion FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Arsenal FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Liverpool FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Newcastle United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Manchester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Southampton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: AFC Bournemouth
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Brentford FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Leicester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: West Ham United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Crystal Palace FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Everton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Aston Villa FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Newcastle United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Brighton & Hove Albion FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: AFC Bournemouth
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Manchester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Chelsea FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Arsenal FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Liverpool FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Nottingham Forest FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Southampton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Crystal Palace FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: West Ham United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Everton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Aston Villa FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Brentford FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Leicester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: AFC Bournemouth
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Newcastle United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Liverpool FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Nottingham Forest FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Southampton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Aston Villa FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Everton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: Brentford FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Arsenal FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: West Ham United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Chelsea FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Leicester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Manchester City FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Crystal Palace FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Brighton & Hove Albion FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Arsenal FC
+Deplasman: Newcastle United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Aston Villa FC
+Deplasman: Tottenham Hotspur FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Brentford FC
+Deplasman: Fulham FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Brighton & Hove Albion FC
+Deplasman: Liverpool FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Chelsea FC
+Deplasman: Manchester United FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Crystal Palace FC
+Deplasman: Wolverhampton Wanderers FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Everton FC
+Deplasman: Southampton FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Leicester City FC
+Deplasman: Ipswich Town FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: Manchester City FC
+Deplasman: AFC Bournemouth
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-18T00:00:00Z
+Ev Sahibi: West Ham United FC
+Deplasman: Nottingham Forest FC
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: AFC Bournemouth
+Deplasman: Leicester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Fulham FC
+Deplasman: Manchester City FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Ipswich Town FC
+Deplasman: West Ham United FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Liverpool FC
+Deplasman: Crystal Palace FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Manchester United FC
+Deplasman: Aston Villa FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Newcastle United FC
+Deplasman: Everton FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Nottingham Forest FC
+Deplasman: Chelsea FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Southampton FC
+Deplasman: Arsenal FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Tottenham Hotspur FC
+Deplasman: Brighton & Hove Albion FC
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-25T15:00:00Z
+Ev Sahibi: Wolverhampton Wanderers FC
+Deplasman: Brentford FC
+Durum: TIMED
+Skor: None - None
+------------------------
