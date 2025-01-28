@@ -1,0 +1,1839 @@
+PREMIER LİG MAÇLARI
+==================================================
+
+Tarih: 2024-08-23T18:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-08-24T13:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-08-24T13:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-08-24T13:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-08-24T13:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-08-24T13:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-08-24T16:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-08-25T13:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-08-25T15:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-30T18:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-08-31T13:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 3 - 3
+------------------------
+Tarih: 2024-08-31T13:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-08-31T13:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-08-31T13:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-31T13:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-08-31T16:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-09-01T13:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-09-01T15:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-09-13T18:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-09-14T13:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-09-14T13:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 1 - 4
+------------------------
+Tarih: 2024-09-14T13:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-09-14T13:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-09-14T13:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-09-14T16:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 1 - 6
+------------------------
+Tarih: 2024-09-15T13:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-09-15T15:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-09-20T18:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-09-21T13:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-21T13:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 0 - 5
+------------------------
+Tarih: 2024-09-21T13:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-09-21T13:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-21T16:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-09-22T13:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 4 - 3
+------------------------
+Tarih: 2024-09-22T15:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 5 - 1
+------------------------
+Tarih: 2024-09-22T17:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-09-27T18:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-09-28T13:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-09-28T13:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-09-28T13:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-09-28T13:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-09-28T13:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-09-28T16:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-09-29T13:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 2 - 4
+------------------------
+Tarih: 2024-09-29T15:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 3 - 4
+------------------------
+Tarih: 2024-10-04T18:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-05T13:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-10-05T13:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-10-05T13:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-05T13:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-10-05T16:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-10-06T13:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-10-06T15:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 3 - 3
+------------------------
+Tarih: 2024-10-06T17:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-18T18:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-19T13:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-19T13:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-10-19T13:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-10-19T13:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-10-19T13:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-10-19T16:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-10-20T13:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-10-20T15:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 2 - 4
+------------------------
+Tarih: 2024-10-25T18:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-26T13:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-26T13:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-10-26T13:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-10-26T13:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-10-26T16:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-10-27T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 0 - 5
+------------------------
+Tarih: 2024-10-27T16:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-10-27T18:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-01T19:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-02T14:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-11-02T14:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 7 - 2
+------------------------
+Tarih: 2024-11-02T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-11-02T14:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-02T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-02T17:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-03T14:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-03T16:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-11-08T19:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-09T14:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-11-09T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-11-09T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-11-09T14:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-11-09T17:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-10T14:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 0 - 0
+------------------------
+Tarih: 2024-11-10T16:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2024-11-10T18:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-11-22T19:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 3 - 0
+------------------------
+Tarih: 2024-11-23T14:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 5 - 2
+------------------------
+Tarih: 2024-11-23T14:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-11-23T14:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 4 - 0
+------------------------
+Tarih: 2024-11-23T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 4 - 3
+------------------------
+Tarih: 2024-11-23T14:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-23T17:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-24T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 0 - 3
+------------------------
+Tarih: 2024-11-24T16:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-11-29T19:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-11-30T14:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 1 - 5
+------------------------
+Tarih: 2024-11-30T14:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-11-30T14:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 3 - 1
+------------------------
+Tarih: 2024-11-30T14:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 1 - 0
+------------------------
+Tarih: 2024-11-30T14:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-11-30T17:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-01T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-01T16:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 0 - 4
+------------------------
+Tarih: 2024-12-06T19:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-12-07T14:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-07T14:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2024-12-07T14:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 2 - 2
+------------------------
+Tarih: 2024-12-07T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-12-07T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-07T17:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-08T14:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 4 - 3
+------------------------
+Tarih: 2024-12-08T16:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-13T19:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2024-12-14T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-14T14:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-12-14T14:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-14T14:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-14T17:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 0 - 2
+------------------------
+Tarih: 2024-12-15T14:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-12-15T16:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: TSG 1899 Hoffenheim
+Durum: FINISHED
+Skor: 1 - 1
+------------------------
+Tarih: 2024-12-15T18:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 2 - 1
+------------------------
+Tarih: 2024-12-20T19:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: RB Leipzig
+Durum: FINISHED
+Skor: 5 - 1
+------------------------
+Tarih: 2024-12-21T14:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: FC St. Pauli 1910
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2024-12-21T14:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: 1. FSV Mainz 05
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2024-12-21T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: Borussia Mönchengladbach
+Durum: FINISHED
+Skor: 1 - 2
+------------------------
+Tarih: 2024-12-21T14:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 4 - 1
+------------------------
+Tarih: 2024-12-21T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: FC Augsburg
+Durum: FINISHED
+Skor: 5 - 1
+------------------------
+Tarih: 2024-12-21T17:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: SC Freiburg
+Durum: FINISHED
+Skor: 5 - 1
+------------------------
+Tarih: 2024-12-22T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: 1. FC Heidenheim 1846
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2024-12-22T16:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: Borussia Dortmund
+Durum: FINISHED
+Skor: 1 - 3
+------------------------
+Tarih: 2025-01-10T19:45:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: Bayer 04 Leverkusen
+Durum: FINISHED
+Skor: 2 - 3
+------------------------
+Tarih: 2025-01-11T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: VfL Wolfsburg
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2025-01-11T14:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: 1. FC Union Berlin
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2025-01-11T14:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: Holstein Kiel
+Durum: FINISHED
+Skor: 3 - 2
+------------------------
+Tarih: 2025-01-11T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: VfL Bochum 1848
+Durum: FINISHED
+Skor: 2 - 0
+------------------------
+Tarih: 2025-01-11T14:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: Eintracht Frankfurt
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2025-01-11T17:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: FC Bayern München
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2025-01-12T14:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: SV Werder Bremen
+Durum: FINISHED
+Skor: 4 - 2
+------------------------
+Tarih: 2025-01-12T16:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: VfB Stuttgart
+Durum: FINISHED
+Skor: 0 - 1
+------------------------
+Tarih: 2025-01-14T17:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: Borussia Dortmund
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: 1. FSV Mainz 05
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: SC Freiburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-14T19:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: Borussia Mönchengladbach
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T17:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: FC St. Pauli 1910
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: RB Leipzig
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: TSG 1899 Hoffenheim
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: 1. FC Heidenheim 1846
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-15T19:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: FC Augsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-17T19:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: Borussia Dortmund
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T14:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: SC Freiburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T14:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: VfL Wolfsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T14:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: FC St. Pauli 1910
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: RB Leipzig
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: TSG 1899 Hoffenheim
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-18T17:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: Borussia Mönchengladbach
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T14:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: 1. FSV Mainz 05
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-19T16:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: FC Augsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-24T19:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: Holstein Kiel
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T14:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: Bayer 04 Leverkusen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: VfB Stuttgart
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T14:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: FC Bayern München
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T14:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: 1. FC Heidenheim 1846
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T14:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: SV Werder Bremen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-25T17:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: VfL Bochum 1848
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: Eintracht Frankfurt
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-26T16:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: 1. FC Union Berlin
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-01-31T19:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: 1. FSV Mainz 05
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T14:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: Borussia Dortmund
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: SC Freiburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T14:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: FC Augsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T14:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: Borussia Mönchengladbach
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T14:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: Holstein Kiel
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-01T17:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: RB Leipzig
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-02T14:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: VfL Wolfsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-02T16:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: TSG 1899 Hoffenheim
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-07T19:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: SV Werder Bremen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T14:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: Bayer 04 Leverkusen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T14:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: VfB Stuttgart
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T14:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: 1. FC Heidenheim 1846
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: FC Augsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T14:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: 1. FC Union Berlin
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-08T17:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: Eintracht Frankfurt
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-09T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: VfL Bochum 1848
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-09T16:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: FC St. Pauli 1910
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-14T19:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: RB Leipzig
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: Borussia Dortmund
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T14:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: SC Freiburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T14:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: VfL Wolfsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T14:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: Borussia Mönchengladbach
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-15T17:30:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: FC Bayern München
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-16T14:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: TSG 1899 Hoffenheim
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-16T16:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: Holstein Kiel
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-16T18:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: 1. FSV Mainz 05
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-21T19:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: SV Werder Bremen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T14:30:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: Bayer 04 Leverkusen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T14:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: FC Augsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T14:30:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: VfL Bochum 1848
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T14:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: FC St. Pauli 1910
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-22T17:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: 1. FC Union Berlin
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-23T14:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: 1. FC Heidenheim 1846
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-23T16:30:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: Eintracht Frankfurt
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-23T18:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: VfB Stuttgart
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-02-28T19:30:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: FC Bayern München
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T14:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: Borussia Dortmund
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T14:30:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: TSG 1899 Hoffenheim
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T14:30:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: VfL Wolfsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T14:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: 1. FSV Mainz 05
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T14:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: Borussia Mönchengladbach
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-01T17:30:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: Bayer 04 Leverkusen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-02T14:30:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: Holstein Kiel
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-02T16:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: SC Freiburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: VfB Stuttgart
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: RB Leipzig
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: 1. FC Heidenheim 1846
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: SV Werder Bremen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: FC Augsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: 1. FSV Mainz 05
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: 1. FC Union Berlin
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: VfL Bochum 1848
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-08T00:00:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: FC St. Pauli 1910
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: Bayer 04 Leverkusen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: FC Bayern München
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: Borussia Dortmund
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: Eintracht Frankfurt
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: TSG 1899 Hoffenheim
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: SC Freiburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: VfL Wolfsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: Borussia Mönchengladbach
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-15T00:00:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: Holstein Kiel
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: VfB Stuttgart
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: RB Leipzig
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: 1. FC Heidenheim 1846
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: SV Werder Bremen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: FC Augsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: 1. FSV Mainz 05
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: 1. FC Union Berlin
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: VfL Bochum 1848
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-03-29T00:00:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: FC St. Pauli 1910
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: Bayer 04 Leverkusen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: VfB Stuttgart
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: FC Bayern München
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: Borussia Dortmund
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: Eintracht Frankfurt
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: TSG 1899 Hoffenheim
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: VfL Wolfsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: Borussia Mönchengladbach
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-05T00:00:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: Holstein Kiel
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: RB Leipzig
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: Borussia Dortmund
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: 1. FC Heidenheim 1846
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: SV Werder Bremen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: SC Freiburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: FC Augsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: 1. FSV Mainz 05
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: 1. FC Union Berlin
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-12T00:00:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: FC St. Pauli 1910
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: Bayer 04 Leverkusen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: VfB Stuttgart
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: FC Bayern München
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: Eintracht Frankfurt
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: TSG 1899 Hoffenheim
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: VfL Wolfsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: Borussia Mönchengladbach
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: VfL Bochum 1848
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-19T00:00:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: Holstein Kiel
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: RB Leipzig
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: Borussia Dortmund
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: 1. FC Heidenheim 1846
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: SC Freiburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: 1. FSV Mainz 05
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: Borussia Mönchengladbach
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: 1. FC Union Berlin
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: FC St. Pauli 1910
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-04-26T00:00:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: FC Augsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: Bayer 04 Leverkusen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: VfB Stuttgart
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: FC Bayern München
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: Eintracht Frankfurt
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: TSG 1899 Hoffenheim
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: SV Werder Bremen
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: VfL Wolfsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: VfL Bochum 1848
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-03T00:00:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: Holstein Kiel
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: SV Werder Bremen
+Deplasman: RB Leipzig
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Bayer 04 Leverkusen
+Deplasman: Borussia Dortmund
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: VfL Wolfsburg
+Deplasman: TSG 1899 Hoffenheim
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: 1. FC Union Berlin
+Deplasman: 1. FC Heidenheim 1846
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Holstein Kiel
+Deplasman: SC Freiburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: VfB Stuttgart
+Deplasman: FC Augsburg
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: VfL Bochum 1848
+Deplasman: 1. FSV Mainz 05
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: FC Bayern München
+Deplasman: Borussia Mönchengladbach
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-10T00:00:00Z
+Ev Sahibi: Eintracht Frankfurt
+Deplasman: FC St. Pauli 1910
+Durum: SCHEDULED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: 1. FSV Mainz 05
+Deplasman: Bayer 04 Leverkusen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: RB Leipzig
+Deplasman: VfB Stuttgart
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: TSG 1899 Hoffenheim
+Deplasman: FC Bayern München
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: SC Freiburg
+Deplasman: Eintracht Frankfurt
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: 1. FC Heidenheim 1846
+Deplasman: SV Werder Bremen
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: Borussia Mönchengladbach
+Deplasman: VfL Wolfsburg
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: FC Augsburg
+Deplasman: 1. FC Union Berlin
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: FC St. Pauli 1910
+Deplasman: VfL Bochum 1848
+Durum: TIMED
+Skor: None - None
+------------------------
+Tarih: 2025-05-17T13:30:00Z
+Ev Sahibi: Borussia Dortmund
+Deplasman: Holstein Kiel
+Durum: TIMED
+Skor: None - None
+------------------------

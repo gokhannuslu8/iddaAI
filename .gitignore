@@ -1,0 +1,11 @@
+﻿# Geçici dosyalar
+__pycache__/
+.ipynb_checkpoints/
+venv/
+
+# IDE dosyaları
+.vscode/
+.idea/
+
+# Sistem dosyaları
+.DS_Store
