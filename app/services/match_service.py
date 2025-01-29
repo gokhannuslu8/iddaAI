@@ -7,6 +7,7 @@ from app.services.ml_service import MLService
 from app.utils.helpers import get_team_id
 import traceback
 from scipy.stats import poisson
+from datetime import datetime
 
 class MatchService:
     def __init__(self):
@@ -46,6 +47,7 @@ class MatchService:
         try:
             # Gerekli verileri kontrol et
             if not data or 'ev_sahibi' not in data or 'deplasman' not in data:
+                print("[ERROR] Eksik veri: ev_sahibi veya deplasman")
                 return {
                     'status': 'error',
                     'message': 'Ev sahibi ve deplasman takımları gerekli'
@@ -58,10 +60,11 @@ class MatchService:
             print(f"[INFO] Tahmin yapılıyor: {ev_sahibi} vs {deplasman}")
             
             # Takım ID'lerini al
-            ev_sahibi_id = get_team_id(ev_sahibi)
-            deplasman_id = get_team_id(deplasman)
+            ev_sahibi_id = self.football_service.get_team_id(ev_sahibi)
+            deplasman_id = self.football_service.get_team_id(deplasman)
             
             if not ev_sahibi_id or not deplasman_id:
+                print(f"[ERROR] Takım ID'si bulunamadı: {ev_sahibi if not ev_sahibi_id else deplasman}")
                 return {
                     'status': 'error',
                     'message': f'Takım bulunamadı: {ev_sahibi if not ev_sahibi_id else deplasman}'
@@ -343,8 +346,10 @@ class MatchService:
 
             tahminler.update(ilk_yari_tahminleri)
 
-            # Yanıtı hazırla
-            return {
+            # Tahmin sonuçlarını döndürmeden önce loglama ekleyelim
+            print(f"[DEBUG] Tahmin sonuçları: {tahminler}")
+            
+            response = {
                 'durum': 'basarili',
                 'tahminler': tahminler,
                 'takim1': {
@@ -358,6 +363,9 @@ class MatchService:
                     'istatistikler': deplasman_stats
                 }
             }
+            
+            print(f"[DEBUG] Response: {response}")
+            return response
             
         except Exception as e:
             print(f"[ERROR] Tahmin hatası: {str(e)}")
@@ -522,4 +530,113 @@ class MatchService:
                         'en_olasilik': '1/1'
                     }
                 }
+            }
+
+    def get_daily_matches(self):
+        """Günün maçlarını getirir"""
+        try:
+            print("[INFO] Günün maçları isteniyor...")
+            matches = self.football_service.get_daily_matches()
+            
+            if not matches:
+                print("[WARNING] Günün maçları bulunamadı")
+                return []
+            
+            print(f"[INFO] {len(matches)} adet maç bulundu")
+            
+            # Maç detaylarını logla
+            for match in matches:
+                print(f"[DEBUG] Maç: {match['ev_sahibi']} vs {match['deplasman']}")
+            
+            return matches
+        
+        except Exception as e:
+            print(f"[ERROR] Günün maçları alınırken hata: {str(e)}")
+            print(traceback.format_exc())
+            return []
+
+    def create_daily_coupon(self):
+        """Günün kuponunu oluşturur"""
+        try:
+            print("[INFO] Günün kuponu oluşturuluyor...")
+            matches = self.get_daily_matches()
+            
+            if not matches:
+                print("[WARNING] İşlenecek maç bulunamadı")
+                return {
+                    'durum': 'basarili',
+                    'kupon_guven_skoru': 0,
+                    'mac_sayisi': 0,
+                    'maclar': [],
+                    'oneriler': {
+                        'guvenilirlik': 'Düşük',
+                        'ideal_mac': 3,
+                        'maximum_mac': 4,
+                        'minimum_mac': 2
+                    },
+                    'tarih': datetime.now().strftime('%Y-%m-%d')
+                }
+
+            selected_matches = []
+            for match in matches:
+                print(f"[INFO] Maç tahmin ediliyor: {match['ev_sahibi']} vs {match['deplasman']}")
+                prediction = self.predict_match({
+                    'ev_sahibi': match['ev_sahibi'],
+                    'deplasman': match['deplasman']
+                })
+                
+                if prediction.get('durum') == 'basarili':
+                    selected_matches.append({
+                        'mac_id': match.get('mac_id'),
+                        'ev_sahibi': match['ev_sahibi'],
+                        'deplasman': match['deplasman'],
+                        'tahminler': prediction['tahminler'],
+                        'lig': match.get('lig'),
+                        'tarih': match.get('tarih')
+                    })
+                    print(f"[INFO] Maç başarıyla eklendi")
+                else:
+                    print(f"[WARNING] Maç tahmin edilemedi: {prediction.get('message', 'Bilinmeyen hata')}")
+
+            print(f"[INFO] Toplam {len(selected_matches)} maç seçildi")
+            
+            if not selected_matches:
+                return {
+                    'durum': 'basarili',
+                    'kupon_guven_skoru': 0,
+                    'mac_sayisi': 0,
+                    'maclar': [],
+                    'oneriler': {
+                        'guvenilirlik': 'Düşük',
+                        'ideal_mac': 3,
+                        'maximum_mac': 4,
+                        'minimum_mac': 2
+                    },
+                    'tarih': datetime.now().strftime('%Y-%m-%d')
+                }
+
+            # En güvenilir maçları seç
+            selected_matches.sort(key=lambda x: x['tahminler'].get('ek_istatistikler', {}).get('ml_guven', 0), reverse=True)
+            best_matches = selected_matches[:4]  # En güvenilir 4 maçı al
+
+            return {
+                'durum': 'basarili',
+                'kupon_guven_skoru': sum(m['tahminler'].get('ek_istatistikler', {}).get('ml_guven', 0) for m in best_matches) / len(best_matches) if best_matches else 0,
+                'mac_sayisi': len(best_matches),
+                'maclar': best_matches,
+                'oneriler': {
+                    'guvenilirlik': 'Yüksek' if len(best_matches) >= 2 else 'Düşük',
+                    'ideal_mac': 3,
+                    'maximum_mac': 4,
+                    'minimum_mac': 2
+                },
+                'tarih': datetime.now().strftime('%Y-%m-%d')
+            }
+
+        except Exception as e:
+            print(f"[ERROR] Kupon oluşturma hatası: {str(e)}")
+            print(traceback.format_exc())
+            return {
+                'durum': 'hata',
+                'mesaj': str(e)
             } 
