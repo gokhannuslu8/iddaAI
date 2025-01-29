@@ -704,6 +704,24 @@ class FootballService:
                 'mesaj': str(e)
             }
 
+    def get_team_id(self, team_name):
+        """Takım adından ID bulan yardımcı fonksiyon"""
+        takim_id_listesi = {
+            "Bayern Münih": 5,
+            "Leverkusen": 3,
+            "Dortmund": 4,
+            "RB Leipzig": 721,
+            "Hoffenheim": 722,
+            "Freiburg": 723,
+            "Bremen": 724,
+            "Wolfsburg": 725,
+            "Mönchengladbach": 726,
+            "Werder Bremen": 727,
+            "Stuttgart": 10,
+            "PSG": 524
+        }
+        return takim_id_listesi.get(team_name)
+
 class MLService:
     def __init__(self):
         self.model = None

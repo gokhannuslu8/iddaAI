@@ -9,34 +9,42 @@ from datetime import datetime
 import scipy.stats as stats
 from scipy.stats import poisson
 from collections import Counter
+import glob
+import traceback
 
 class MLService:
     def __init__(self):
-        self.model = None
-        self.scaler = None
-        self.model_path = os.path.join('app', 'models', 'match_prediction_model.joblib')
-        self.scaler_path = os.path.join('app', 'models', 'match_prediction_scaler.joblib')
-        self.data_path = os.path.join('app', 'data', 'training_data.csv')
-        self.initialize_model()
+        self.models = {}
+        self.models_dir = os.path.join('app', 'models')
+        self.initialize_models()
 
-    def initialize_model(self):
-        """Model ve scaler'ı yükler veya yeni oluşturur"""
+    def initialize_models(self):
+        """Tüm modelleri yükler"""
         try:
-            self.model = joblib.load(self.model_path)
-            self.scaler = joblib.load(self.scaler_path)
-            print("[INFO] Model ve scaler başarıyla yüklendi")
-        except:
-            print("[INFO] Model ve scaler bulunamadı, yeni model oluşturulacak")
-            self._create_new_model()
-    
-    def _create_new_model(self):
-        """Yeni bir model oluşturur"""
-        self.model = RandomForestClassifier(
-            n_estimators=100,
-            max_depth=10,
-            random_state=42
-        )
-        self.scaler = StandardScaler()
+            model_types = ['mac_sonucu', 'kg_var', 'ust_2_5']
+            
+            for model_type in model_types:
+                # En son eğitilmiş model dosyasını bul
+                model_pattern = os.path.join(self.models_dir, f'{model_type}_model_*.joblib')
+                scaler_pattern = os.path.join(self.models_dir, f'{model_type}_scaler_*.joblib')
+                
+                model_files = sorted(glob.glob(model_pattern))
+                scaler_files = sorted(glob.glob(scaler_pattern))
+                
+                if model_files and scaler_files:
+                    latest_model = model_files[-1]
+                    latest_scaler = scaler_files[-1]
+                    
+                    self.models[model_type] = {
+                        'model': joblib.load(latest_model),
+                        'scaler': joblib.load(latest_scaler)
+                    }
+                    print(f"[INFO] {model_type} modeli yüklendi: {latest_model}")
+                else:
+                    print(f"[WARNING] {model_type} modeli bulunamadı")
+                    
+        except Exception as e:
+            print(f"[ERROR] Model yükleme hatası: {str(e)}")
 
     def train_model(self, **kwargs):
         """Modeli eğitir"""
@@ -59,6 +67,21 @@ class MLService:
             
             print("[INFO] Eğitim verisi hazırlanıyor...")
             print(f"[INFO] Toplam {len(matches)} maç verisi bulundu")
+            
+            # Özellik isimlerini tanımla
+            self.feature_names = [
+                'home_goals_per_game', 'away_goals_per_game',
+                'home_conceded_per_game', 'away_conceded_per_game',
+                'home_form', 'away_form',
+                'home_win_rate', 'away_win_rate',
+                'home_draw_rate', 'away_draw_rate',
+                'home_loss_rate', 'away_loss_rate',
+                'home_home_goals_per_game', 'away_away_goals_per_game',
+                'home_first_half_goals', 'away_first_half_goals',
+                'home_last_5_form', 'away_last_5_form',
+                'home_last_5_goals', 'away_last_5_goals',
+                'home_both_scored_rate', 'away_both_scored_rate'
+            ]
             
             for idx, match in enumerate(matches):
                 try:
@@ -94,16 +117,28 @@ class MLService:
                     
                     # Özellik vektörünü oluştur
                     feature_vector = [
-                        home_goals / home_matches,
-                        away_goals / away_matches,
-                        home_conceded / home_matches,
-                        away_conceded / away_matches,
-                        home_points / home_matches,
-                        away_points / away_matches,
-                        home_form,
-                        away_form,
-                        home_rank,
-                        away_rank
+                        home_stats['mac_basi_gol'],
+                        away_stats['mac_basi_gol'],
+                        home_stats['yenilen_gol_ortalama'],
+                        away_stats['yenilen_gol_ortalama'],
+                        home_stats['form'] / 100,
+                        away_stats['form'] / 100,
+                        home_stats['galibiyetler'] / home_stats['toplam_mac'],
+                        away_stats['galibiyetler'] / away_stats['toplam_mac'],
+                        home_stats['beraberlikler'] / home_stats['toplam_mac'],
+                        away_stats['beraberlikler'] / away_stats['toplam_mac'],
+                        home_stats['maglubiyetler'] / home_stats['toplam_mac'],
+                        away_stats['maglubiyetler'] / away_stats['toplam_mac'],
+                        home_stats['ev_sahibi_mac_basi_gol'],
+                        away_stats['deplasman_mac_basi_gol'],
+                        home_stats['ilk_yari_gol_ortalama'],
+                        away_stats['ilk_yari_gol_ortalama'],
+                        home_stats['son_5_form'] / 100,
+                        away_stats['son_5_form'] / 100,
+                        home_stats['son_5_gol'] / 5,
+                        away_stats['son_5_gol'] / 5,
+                        home_stats['kg_var_yuzde'] / 100,
+                        away_stats['kg_var_yuzde'] / 100
                     ]
                     
                     # NaN ve sonsuz değer kontrolü
@@ -150,39 +185,59 @@ class MLService:
                 }
             
             # Verileri ölçeklendir
-            X_scaled = self.scaler.fit_transform(X)
+            X_scaled = self.models['mac_sonucu']['scaler'].fit_transform(X)
             
             print("[INFO] Model eğitimi başlıyor...")
 
-            # Modeli eğit
-            self.model.fit(X_scaled, y)
+            # Zaman damgası oluştur
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             
-            print("[INFO] Model eğitimi tamamlandı")
-
-            # Modeli kaydet
-            joblib.dump(self.model, self.model_path)
-            joblib.dump(self.scaler, self.scaler_path)
-            
-            print("[INFO] Model kaydedildi")
+            # Her model tipi için eğitim yap
+            for model_type in ['mac_sonucu', 'kg_var', 'ust_2_5']:
+                print(f"[INFO] {model_type} modeli eğitiliyor...")
+                
+                # Model ve scaler'ı hazırla
+                if model_type not in self.models:
+                    self.models[model_type] = {
+                        'model': RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42),
+                        'scaler': StandardScaler()
+                    }
+                
+                # Verileri ölçeklendir
+                X_scaled = self.models[model_type]['scaler'].fit_transform(X)
+                
+                # Modeli eğit
+                self.models[model_type]['model'].fit(X_scaled, y)
+                
+                # Model ve scaler'ı kaydet
+                model_path = os.path.join(self.models_dir, f'{model_type}_model_{timestamp}.joblib')
+                scaler_path = os.path.join(self.models_dir, f'{model_type}_scaler_{timestamp}.joblib')
+                
+                joblib.dump(self.models[model_type]['model'], model_path)
+                joblib.dump(self.models[model_type]['scaler'], scaler_path)
+                
+                print(f"[INFO] {model_type} modeli kaydedildi: {model_path}")
 
             # Eğitim sonuçlarını hesapla
-            train_accuracy = self.model.score(X_scaled, y)
-            y_pred = self.model.predict(X_scaled)
-            class_distribution = Counter(y)
+            results = {}
+            for model_type in self.models:
+                accuracy = self.models[model_type]['model'].score(X_scaled, y)
+                results[model_type] = {
+                    'dogruluk': round(accuracy * 100, 2)
+                }
 
             return {
-                'status': 'success',
-                'message': 'Model başarıyla eğitildi',
-                'accuracy': round(train_accuracy * 100, 2),
-                'data_points': len(X),
-                'class_distribution': dict(class_distribution)
+                'status': 'basarili',
+                'sonuclar': results,
+                'veri_sayisi': len(X),
+                'egitim_tarihi': timestamp
             }
 
         except Exception as e:
             print(f"[ERROR] Model eğitim hatası: {str(e)}")
             return {
-                'status': 'error',
-                'message': str(e)
+                'status': 'hata',
+                'mesaj': str(e)
             }
 
     def _calculate_form(self, matches, limit=5):
@@ -226,111 +281,142 @@ class MLService:
             print(f"[ERROR] Form hesaplama hatası: {str(e)}")
             return 0
 
-    def predict_match_result(self, home_stats, away_stats):
+    def predict_match_result(self, model_type, home_stats, away_stats):
         """Maç sonucunu tahmin eder"""
         try:
-            if not self.model or not self.scaler:
+            if model_type not in self.models:
+                print(f"[ERROR] Model tipi bulunamadı: {model_type}")
                 return None
 
-            # Özellik vektörünü hazırla
-            features = [
-                home_stats['attigi_gol'] / max(home_stats['oynadigi_mac'], 1),
-                away_stats['attigi_gol'] / max(away_stats['oynadigi_mac'], 1),
-                home_stats['yedigi_gol'] / max(home_stats['oynadigi_mac'], 1),
-                away_stats['yedigi_gol'] / max(away_stats['oynadigi_mac'], 1),
-                home_stats['puan'] / max(home_stats['oynadigi_mac'], 1),
-                away_stats['puan'] / max(away_stats['oynadigi_mac'], 1),
-                self._calculate_form(home_stats.get('son_maclar', [])),
-                self._calculate_form(away_stats.get('son_maclar', [])),
-                home_stats.get('lig_sirasi', 10),
-                away_stats.get('lig_sirasi', 10)
-            ]
+            model = self.models[model_type]['model']
+            scaler = self.models[model_type]['scaler']
+
+            # Özellik vektörünü DataFrame olarak hazırla
+            features_dict = {
+                'home_goals_per_game': home_stats['mac_basi_gol'],
+                'away_goals_per_game': away_stats['mac_basi_gol'],
+                'home_conceded_per_game': home_stats['yenilen_gol_ortalama'],
+                'away_conceded_per_game': away_stats['yenilen_gol_ortalama'],
+                'home_form': home_stats['form'] / 100,
+                'away_form': away_stats['form'] / 100,
+                'home_win_rate': home_stats['galibiyetler'] / home_stats['toplam_mac'],
+                'away_win_rate': away_stats['galibiyetler'] / away_stats['toplam_mac'],
+                'home_draw_rate': home_stats['beraberlikler'] / home_stats['toplam_mac'],
+                'away_draw_rate': away_stats['beraberlikler'] / away_stats['toplam_mac'],
+                'home_loss_rate': home_stats['maglubiyetler'] / home_stats['toplam_mac'],
+                'away_loss_rate': away_stats['maglubiyetler'] / away_stats['toplam_mac'],
+                'home_home_goals_per_game': home_stats['ev_sahibi_mac_basi_gol'],
+                'away_away_goals_per_game': away_stats['deplasman_mac_basi_gol'],
+                'home_first_half_goals': home_stats['ilk_yari_gol_ortalama'],
+                'away_first_half_goals': away_stats['ilk_yari_gol_ortalama'],
+                'home_last_5_form': home_stats['son_5_form'] / 100,
+                'away_last_5_form': away_stats['son_5_form'] / 100,
+                'home_last_5_goals': home_stats['son_5_gol'] / 5,
+                'away_last_5_goals': away_stats['son_5_gol'] / 5,
+                'home_both_scored_rate': home_stats['kg_var_yuzde'] / 100,
+                'away_both_scored_rate': away_stats['kg_var_yuzde'] / 100
+            }
             
+            # DataFrame oluştur
+            X = pd.DataFrame([features_dict])
+
             # Ölçeklendir
-            X_scaled = self.scaler.transform([features])
+            X_scaled = scaler.transform(X)
             
             # Tahmin yap
-            prediction = self.model.predict([features])[0]
-            probabilities = self.model.predict_proba([features])[0]
+            prediction = model.predict(X_scaled)[0]
+            probabilities = model.predict_proba(X_scaled)[0]
             
             # Güven skorunu hesapla
             confidence = round(max(probabilities) * 100)
             
-            return {
-                'tahmin': prediction,
-                'olasiliklar': {
-                    'MS1': round(probabilities[1] * 100, 2),
-                    'MSX': round(probabilities[0] * 100, 2),
-                    'MS2': round(probabilities[2] * 100, 2)
-                },
-                'guven': confidence
-            }
+            # Model tipine göre sonuçları formatla
+            if model_type == 'mac_sonucu':
+                return {
+                    'tahmin': 'MS1' if prediction == 1 else ('MSX' if prediction == 0 else 'MS2'),
+                    'olasiliklar': {
+                        'MS1': round(probabilities[1] * 100, 2),
+                        'MSX': round(probabilities[0] * 100, 2),
+                        'MS2': round(probabilities[2] * 100, 2)
+                    },
+                    'guven': confidence
+                }
+            elif model_type == 'kg_var':
+                return {
+                    'tahmin': 'VAR' if prediction == 1 else 'YOK',
+                    'olasiliklar': {
+                        'VAR': round(probabilities[1] * 100, 2),
+                        'YOK': round(probabilities[0] * 100, 2)
+                    },
+                    'guven': confidence
+                }
+            else:  # ust_2_5
+                return {
+                    'tahmin': 'ÜST' if prediction == 1 else 'ALT',
+                    'olasiliklar': {
+                        'ÜST': round(probabilities[1] * 100, 2),
+                        'ALT': round(probabilities[0] * 100, 2)
+                    },
+                    'guven': confidence
+                }
             
         except Exception as e:
-            print(f"[ERROR] Tahmin hatası: {str(e)}")
+            print(f"[ERROR] Tahmin hatası ({model_type}): {str(e)}")
+            print(f"[ERROR] Detay: {traceback.format_exc()}")
             return None
     
     def get_model_status(self):
         """Model durumunu kontrol eder"""
         try:
-            model_file = self.model_path
-            scaler_file = self.scaler_path
-            
-            # Model dosyası kontrolü
-            model_exists = os.path.exists(model_file)
-            model_size = os.path.getsize(model_file) if model_exists else 0
-            model_created = datetime.fromtimestamp(os.path.getctime(model_file)).strftime('%Y-%m-%d %H:%M:%S') if model_exists else None
-            model_modified = datetime.fromtimestamp(os.path.getmtime(model_file)).strftime('%Y-%m-%d %H:%M:%S') if model_exists else None
-            
-            model_statuses = {
-                'model_dosyasi': {
-                    'boyut': f"{model_size / (1024*1024):.2f} MB" if model_exists else None,
-                    'olusturulma_tarihi': model_created,
-                    'son_guncelleme': model_modified
+            model_files = {
+                'mac_sonucu': {
+                    'model': 'mac_sonucu_model_*.joblib',
+                    'scaler': 'mac_sonucu_scaler_*.joblib'
                 },
-                'model_durumu': {
-                    'model_var_mi': model_exists,
-                    'model_yuklu_mu': self.model is not None,
-                    'son_durum': 'Aktif ve Çalışıyor' if self.model else 'Yüklü Değil'
+                'kg_var': {
+                    'model': 'kg_var_model_*.joblib',
+                    'scaler': 'kg_var_scaler_*.joblib'
                 },
-                'model_ozellikleri': {
-                    'agac_sayisi': 100,
-                    'max_derinlik': 10,
-                    'ozellik_sayisi': 12
-                } if self.model else None
+                'ust_2_5': {
+                    'model': 'ust_2_5_model_*.joblib',
+                    'scaler': 'ust_2_5_scaler_*.joblib'
+                }
             }
             
-            # Veri durumu kontrolü
-            from app.services.football_service import FootballService
-            football_service = FootballService()
-            matches = football_service.get_historical_matches(1800)
-            has_data = len(matches) > 0
+            model_statuses = {}
+            models_ready = True
             
-            # Önerileri oluştur
-            recommendations = []
-            for model_type, status in model_statuses.items():
-                if not status['model_durumu']['model_var_mi']:
-                    recommendations.append(f"{model_type} modeli eğitimi gerekli")
-                elif status['model_durumu']['model_var_mi'] and status['model_dosyasi']['son_guncelleme']:
-                    days_since_update = (datetime.now() - datetime.strptime(status['model_dosyasi']['son_guncelleme'], '%Y-%m-%d %H:%M:%S')).days
-                    if days_since_update > 7:
-                        recommendations.append(f"{model_type} modeli güncelleme önerilir")
-            
-            if not has_data:
-                recommendations.append("Veri toplama gerekli")
-            
-            # Genel durum kontrolü
-            all_models_ready = all(status['model_durumu']['model_yuklu_mu'] for status in model_statuses.values())
+            for model_type, files in model_files.items():
+                # En son model dosyasını bul
+                model_pattern = os.path.join(self.models_dir, files['model'].replace('*', '*'))
+                model_files = sorted(glob.glob(model_pattern))
+                
+                if not model_files:
+                    models_ready = False
+                    model_statuses[model_type] = {
+                        'durum': 'bulunamadı',
+                        'son_guncelleme': None
+                    }
+                    continue
+                    
+                latest_model = model_files[-1]
+                model_modified = datetime.fromtimestamp(os.path.getmtime(latest_model))
+                
+                model_statuses[model_type] = {
+                    'durum': 'hazır',
+                    'model_yolu': latest_model,
+                    'son_guncelleme': model_modified.strftime('%Y-%m-%d %H:%M:%S'),
+                    'boyut': f"{os.path.getsize(latest_model) / (1024*1024):.2f} MB"
+                }
             
             return {
-                'durum': 'hazir' if all_models_ready and has_data else 'hazir_degil',
+                'durum': 'hazir' if models_ready else 'hazir_degil',
                 'model_durumlari': model_statuses,
-                'veri_durumu': {
-                    'veri_var_mi': has_data,
-                    'son_durum': f"Veri Mevcut ({len(matches)} maç)" if has_data else "Veri Yok",
-                    'son_guncelleme': datetime.fromtimestamp(os.path.getmtime(self.model_path)).strftime('%Y-%m-%d %H:%M:%S') if os.path.exists(self.model_path) else None
-                },
-                'oneriler': recommendations if recommendations else None
+                'son_guncelleme': max(
+                    status['son_guncelleme'] 
+                    for status in model_statuses.values() 
+                    if status['son_guncelleme']
+                ) if models_ready else None
             }
             
         except Exception as e:
