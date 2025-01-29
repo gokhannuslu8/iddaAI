@@ -713,13 +713,19 @@ class TrainingService:
             }
 
     def _calculate_combined_probability(self, prob1, prob2):
-        """İki olasılığın birlikte gerçekleşme olasılığını hesaplar"""
-        # Olasılıkları 0-1 aralığına çevir
-        p1 = prob1 / 100
-        p2 = prob2 / 100
-        
-        # Birlikte gerçekleşme olasılığı
-        combined_prob = p1 * p2
-        
-        # Yüzdeye çevir ve yuvarla
-        return round(combined_prob * 100, 1)
+        """İki olayın birlikte gerçekleşme olasılığını hesaplar"""
+        try:
+            # Olayların bağımsız olduğunu varsayarak çarpımsal olasılık
+            combined_prob = (prob1 * prob2) / 100
+            
+            # Korelasyon faktörü (0.1 pozitif korelasyon)
+            correlation_factor = 1.1
+            
+            # Korelasyonu hesaba katarak düzeltilmiş olasılık
+            adjusted_prob = min(combined_prob * correlation_factor, 100)
+            
+            return round(adjusted_prob, 2)
+            
+        except Exception as e:
+            print(f"Kombinasyon olasılığı hesaplama hatası: {str(e)}")
+            return 0

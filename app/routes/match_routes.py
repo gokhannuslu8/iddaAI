@@ -14,19 +14,88 @@ bp = Blueprint('match', __name__)
 @bp.route('/mac/tahmin', methods=['POST'])
 def mac_tahmin():
     try:
+        football_service = FootballService()
+        training_service = TrainingService()
         data = request.get_json()
-        # Veri dönüşümü
-        transformed_data = {
-            'ev_sahibi': data.get('takım1'),
-            'deplasman': data.get('takım2')
+        takim1_adi = data.get('takım1')
+        takim2_adi = data.get('takım2')
+        
+        if not takim1_adi or not takim2_adi:
+            return jsonify({'hata': 'Takım isimleri gerekli'}), 400
+        
+        print(f"\nTakım ID'si aranıyor: {takim1_adi}")
+        takim1_id = get_team_id(takim1_adi)
+        print(f"Takım eşleşti: {takim1_adi} -> {takim1_adi} (ID: {takim1_id})")
+        
+        print(f"\nTakım ID'si aranıyor: {takim2_adi}")
+        takim2_id = get_team_id(takim2_adi)
+        print(f"Takım eşleşti: {takim2_adi} -> {takim2_adi} (ID: {takim2_id})")
+        
+        if not takim1_id or not takim2_id:
+            return jsonify({'hata': f'Takım bulunamadı: {takim1_adi if not takim1_id else takim2_adi}'}), 404
+        
+        takim1_stats = football_service.get_team_stats(takim1_id)
+        if not takim1_stats:
+            return jsonify({'hata': f'{takim1_adi} için istatistikler alınamadı. Lütfen biraz bekleyip tekrar deneyin.'}), 500
+            
+        takim2_stats = football_service.get_team_stats(takim2_id)
+        if not takim2_stats:
+            return jsonify({'hata': f'{takim2_adi} için istatistikler alınamadı. Lütfen biraz bekleyip tekrar deneyin.'}), 500
+        
+        # TrainingService ile tahmin yap
+        prediction = training_service.predict_match(takim1_stats, takim2_stats)
+        if prediction['durum'] == 'hata':
+            return jsonify({'hata': prediction['mesaj']}), 500
+            
+        response_data = {
+            'durum': 'basarili',
+            'takim1': {
+                'id': takim1_id,
+                'isim': takim1_adi,
+                'istatistikler': takim1_stats
+            },
+            'takim2': {
+                'id': takim2_id,
+                'isim': takim2_adi,
+                'istatistikler': takim2_stats
+            },
+            'tahminler': prediction['tahminler']  # Tüm tahminleri koru
         }
-        match_service = MatchService()
-        result = match_service.predict_match(transformed_data)
-        return jsonify(result)
+        
+        # Kombinasyon tahminlerini ekle
+        kombinasyonlar = prediction['tahminler']['kombinasyonlar']
+        response_data['tahminler']['kombinasyonlar'] = {
+            'en_yuksek_olasilikli': {
+                'tahmin1': {
+                    'secim': kombinasyonlar['en_yuksek_olasilikli']['tahmin1']['secim'],
+                    'oran': kombinasyonlar['en_yuksek_olasilikli']['tahmin1']['oran']
+                },
+                'tahmin2': {
+                    'secim': kombinasyonlar['en_yuksek_olasilikli']['tahmin2']['secim'],
+                    'oran': kombinasyonlar['en_yuksek_olasilikli']['tahmin2']['oran']
+                },
+                'kombinasyon_olasiligi': kombinasyonlar['en_yuksek_olasilikli']['kombinasyon_olasiligi'],
+                'aciklama': kombinasyonlar['en_yuksek_olasilikli']['aciklama']
+            },
+            'ust_kg_var': {
+                'tahmin1': {
+                    'secim': kombinasyonlar['ust_kg_var']['tahmin1']['secim'],
+                    'oran': kombinasyonlar['ust_kg_var']['tahmin1']['oran']
+                },
+                'tahmin2': {
+                    'secim': kombinasyonlar['ust_kg_var']['tahmin2']['secim'],
+                    'oran': kombinasyonlar['ust_kg_var']['tahmin2']['oran']
+                },
+                'kombinasyon_olasiligi': kombinasyonlar['ust_kg_var']['kombinasyon_olasiligi'],
+                'aciklama': kombinasyonlar['ust_kg_var']['aciklama']
+            }
+        }
+        
+        return jsonify(response_data)
+        
     except Exception as e:
-        return jsonify({
-            'hata': str(e)
-        }), 500
+        print(f"Hata oluştu: {str(e)}")
+        return jsonify({'hata': str(e)}), 500
 
 @bp.route('/erisilen-takimlar', methods=['GET'])
 def get_available_teams():
@@ -68,11 +137,17 @@ def collect_data():
         }), 500
 
 @bp.route('/model/egit', methods=['POST'])
-def model_egit():
+def train_model():
+    """Modeli eğit"""
     try:
         training_service = TrainingService()
         result = training_service.train_model()
-        return jsonify(result)
+        
+        if result['durum'] == 'basarili':
+            return jsonify(result), 200
+        else:
+            return jsonify(result), 400
+            
     except Exception as e:
         return jsonify({
             'durum': 'hata',
@@ -80,11 +155,46 @@ def model_egit():
         }), 500
 
 @bp.route('/model/durum', methods=['GET'])
-def model_durumu():
+def model_status():
+    """Model durumunu kontrol eder"""
     try:
-        ml_service = MLService()
-        status = ml_service.get_model_status()
-        return jsonify(status)
+        training_service = TrainingService()
+        
+        # Model dosyalarını kontrol et
+        model_files = [f for f in os.listdir(training_service.models_dir) if f.startswith('model_')]
+        if not model_files:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Eğitilmiş model bulunamadı'
+            })
+        
+        latest_model = sorted(model_files)[-1]
+        latest_scaler = latest_model.replace('model_', 'scaler_')
+        
+        # Model ve scaler dosyalarının yolları
+        model_path = os.path.join(training_service.models_dir, latest_model)
+        scaler_path = os.path.join(training_service.models_dir, latest_scaler)
+        
+        # Model ve scaler'ın varlığını kontrol et
+        model_exists = os.path.exists(model_path)
+        scaler_exists = os.path.exists(scaler_path)
+        
+        if not model_exists or not scaler_exists:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Model dosyaları eksik'
+            })
+        
+        # Model bilgilerini döndür
+        return jsonify({
+            'durum': 'basarili',
+            'model_bilgisi': {
+                'model_dosyasi': latest_model,
+                'scaler_dosyasi': latest_scaler,
+                'olusturulma_tarihi': datetime.fromtimestamp(os.path.getctime(model_path)).strftime('%Y-%m-%d %H:%M:%S')
+            }
+        })
+        
     except Exception as e:
         return jsonify({
             'durum': 'hata',
@@ -113,6 +223,13 @@ def mac_sonuc_bildir():
             
     except Exception as e:
         return jsonify({'hata': str(e)}), 500
+
+@bp.route('/mac/tahmin', methods=['POST'])
+def predict_match():
+    match_service = MatchService()
+    data = request.get_json()
+    result = match_service.predict_match(data)
+    return jsonify(result)
 
 @bp.route('/tarih-maclari/<tarih>', methods=['GET'])
 def get_matches_by_date(tarih):
