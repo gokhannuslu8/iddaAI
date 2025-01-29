@@ -66,7 +66,7 @@ class MatchService:
                     'status': 'error',
                     'message': f'Takım bulunamadı: {ev_sahibi if not ev_sahibi_id else deplasman}'
                 }
-            
+                
             # Takım istatistiklerini al
             ev_sahibi_stats = self.football_service.get_team_stats(ev_sahibi_id)
             deplasman_stats = self.football_service.get_team_stats(deplasman_id)
@@ -76,7 +76,7 @@ class MatchService:
                     'status': 'error',
                     'message': 'Takım istatistikleri alınamadı'
                 }
-
+            
             # Güç hesaplamaları
             ev_guc = round((
                 ev_sahibi_stats['form'] * 0.3 +  # Form ağırlığını düşür
@@ -120,6 +120,15 @@ class MatchService:
                 'MSX': round(100 - ((ev_guc / (ev_guc + dep_guc)) * 100) - ((dep_guc / (ev_guc + dep_guc)) * 100))
             }
 
+            # İstatistiksel KG Var hesaplaması
+            stats_kg_var = round(
+                (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 +  # (70 + 55) / 2 = 62.5
+                (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 10) +  # min(3.05, 2.35) * 10 = 23.5
+                (min(ev_sahibi_stats['son_5_form'], deplasman_stats['son_5_form']) / 2)  # min(80, 90) / 2 = 40
+            )
+            stats_kg_var = min(stats_kg_var, 90)  # 62.5 + 23.5 + 40 = 126 -> 90 (maximum)
+            stats_kg_yok = 100 - stats_kg_var
+            
             # ML ve istatistik tahminlerini birleştir
             if mac_sonucu:
                 tahminler = {
@@ -242,25 +251,87 @@ class MatchService:
                 ml_guven = mac_sonucu['guven']
 
             if kg_var:
+                # ML modeli tahminleri (%60 ağırlık)
+                ml_kg_var = kg_var['olasiliklar']['VAR']
+                ml_kg_yok = kg_var['olasiliklar']['YOK']
+                
+                # İstatistiksel tahminler (%40 ağırlık)
+                stats_kg_var = round(
+                    (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 +  # (70 + 55) / 2 = 62.5
+                    (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 10) +  # min(3.05, 2.35) * 10 = 23.5
+                    (min(ev_sahibi_stats['son_5_form'], deplasman_stats['son_5_form']) / 2)  # min(80, 90) / 2 = 40
+                )
+                stats_kg_var = min(stats_kg_var, 90)  # 62.5 + 23.5 + 40 = 126 -> 90 (maximum)
+                stats_kg_yok = 100 - stats_kg_var
+                
+                # Ağırlıklı ortalama
                 tahminler['gol_tahminleri']['KG Var'] = round(
-                    kg_var['olasiliklar']['VAR'] * ML_WEIGHT + 
-                    round((ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2) * STATS_WEIGHT
+                    ml_kg_var * ML_WEIGHT +  # ML modeli %60
+                    stats_kg_var * STATS_WEIGHT  # İstatistikler %40
                 )
-                tahminler['gol_tahminleri']['KG Yok'] = round(
-                    kg_var['olasiliklar']['YOK'] * ML_WEIGHT + 
-                    (100 - round((ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2)) * STATS_WEIGHT
-                )
+                tahminler['gol_tahminleri']['KG Yok'] = 100 - tahminler['gol_tahminleri']['KG Var']
 
             if ust_2_5:
                 stats_over_prob = self._calculate_over_probability(2.5, toplam_beklenen_gol) * 100
-                tahminler['gol_sinirlari']['2.5 Üst'] = round(
-                    ust_2_5['olasiliklar']['ÜST'] * ML_WEIGHT + 
-                    stats_over_prob * STATS_WEIGHT
-                )
-                tahminler['gol_sinirlari']['2.5 Alt'] = round(
-                    ust_2_5['olasiliklar']['ALT'] * ML_WEIGHT + 
-                    (100 - stats_over_prob) * STATS_WEIGHT
-                )
+                ust_2_5_oran = round(ust_2_5['olasiliklar']['ÜST'] * ML_WEIGHT + stats_over_prob * STATS_WEIGHT)
+                alt_2_5_oran = 100 - ust_2_5_oran
+
+                # Diğer gol sınırlarını hesapla
+                stats_1_5_over = self._calculate_over_probability(1.5, toplam_beklenen_gol) * 100
+                stats_3_5_over = self._calculate_over_probability(3.5, toplam_beklenen_gol) * 100
+                
+                tahminler['gol_sinirlari'] = {
+                    '1.5 Alt': round(100 - stats_1_5_over),
+                    '1.5 Üst': round(stats_1_5_over),
+                    '2.5 Alt': alt_2_5_oran,
+                    '2.5 Üst': ust_2_5_oran,
+                    '3.5 Alt': round(100 - stats_3_5_over),
+                    '3.5 Üst': round(stats_3_5_over)
+                }
+
+                # Gol tahminlerini güncelle
+                tahminler['gol_tahminleri'].update({
+                    '0-1 Gol': tahminler['gol_sinirlari']['1.5 Alt'],
+                    '2-3 Gol': round(tahminler['gol_sinirlari']['2.5 Üst'] - tahminler['gol_sinirlari']['3.5 Üst']),
+                    '4-5 Gol': round(tahminler['gol_sinirlari']['3.5 Üst'] * 0.7),
+                    '6+ Gol': round(tahminler['gol_sinirlari']['3.5 Üst'] * 0.3)
+                })
+
+                # Kombinasyonları güncelle
+                tahminler['kombinasyonlar'] = {
+                    'en_yuksek_olasilikli': {
+                        'tahmin1': {
+                            'secim': '1.5 Üst',
+                            'oran': tahminler['gol_sinirlari']['1.5 Üst']
+                        },
+                        'tahmin2': {
+                            'secim': 'KG Var',
+                            'oran': tahminler['gol_tahminleri']['KG Var']
+                        },
+                        'kombinasyon_olasiligi': round(
+                            tahminler['gol_sinirlari']['1.5 Üst'] * 
+                            tahminler['gol_tahminleri']['KG Var'] / 100,
+                            2
+                        ),
+                        'aciklama': f"1.5 Üst ({tahminler['gol_sinirlari']['1.5 Üst']}%) ve KG Var ({tahminler['gol_tahminleri']['KG Var']}%) birlikte gerçekleşme olasılığı: {round(tahminler['gol_sinirlari']['1.5 Üst'] * tahminler['gol_tahminleri']['KG Var'] / 100, 2)}%"
+                    },
+                    'ust_kg_var': {
+                        'tahmin1': {
+                            'secim': '2.5 Üst',
+                            'oran': ust_2_5_oran
+                        },
+                        'tahmin2': {
+                            'secim': 'KG Var',
+                            'oran': tahminler['gol_tahminleri']['KG Var']
+                        },
+                        'kombinasyon_olasiligi': round(
+                            ust_2_5_oran * 
+                            tahminler['gol_tahminleri']['KG Var'] / 100,
+                            2
+                        ),
+                        'aciklama': f"2.5 Üst ({ust_2_5_oran}%) ve KG Var ({tahminler['gol_tahminleri']['KG Var']}%) birlikte gerçekleşme olasılığı: {round(ust_2_5_oran * tahminler['gol_tahminleri']['KG Var'] / 100, 2)}%"
+                    }
+                }
 
             # İlk yarı ve İY/MS tahminlerini hesapla
             ilk_yari_tahminleri = self._calculate_first_half_probabilities(
