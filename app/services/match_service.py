@@ -105,8 +105,8 @@ class MatchService:
             ilk_yari_beklenen = round(toplam_beklenen_gol * 0.35, 2)  # Genelde gollerin %35'i ilk yarıda
 
             # ML ve istatistik ağırlıkları
-            ML_WEIGHT = 0.60  # ML modeli ağırlığı (%60)
-            STATS_WEIGHT = 0.40  # İstatistiksel analiz ağırlığı (%40)
+            ML_WEIGHT = 0.70  # ML modeli ağırlığını artır (%70)
+            STATS_WEIGHT = 0.30  # İstatistik ağırlığını azalt (%30)
 
             # Model tahminlerini al
             mac_sonucu = self.ml_service.predict_match_result('mac_sonucu', ev_sahibi_stats, deplasman_stats)
@@ -122,11 +122,12 @@ class MatchService:
 
             # İstatistiksel KG Var hesaplaması
             stats_kg_var = round(
-                (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 +  # (70 + 55) / 2 = 62.5
-                (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 10) +  # min(3.05, 2.35) * 10 = 23.5
-                (min(ev_sahibi_stats['son_5_form'], deplasman_stats['son_5_form']) / 2)  # min(80, 90) / 2 = 40
+                (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 * 0.4 +  # Geçmiş KG Var yüzdesi
+                (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 15) +   # Gol beklentisi etkisi
+                (min(ev_sahibi_stats['son_5_gol'], deplasman_stats['son_5_gol']) / 5 * 20) +     # Son form etkisi
+                (max(ev_sahibi_stats['gol_yemeden_yuzde'], deplasman_stats['gol_yemeden_yuzde']) * 0.2)  # Defans etkisi
             )
-            stats_kg_var = min(stats_kg_var, 90)  # 62.5 + 23.5 + 40 = 126 -> 90 (maximum)
+            stats_kg_var = min(stats_kg_var, 85)  # Maximum %85 ile sınırla
             stats_kg_yok = 100 - stats_kg_var
             
             # ML ve istatistik tahminlerini birleştir
@@ -251,23 +252,22 @@ class MatchService:
                 ml_guven = mac_sonucu['guven']
 
             if kg_var:
-                # ML modeli tahminleri (%60 ağırlık)
+                # ML modeli tahminleri (%70 ağırlık)
                 ml_kg_var = kg_var['olasiliklar']['VAR']
-                ml_kg_yok = kg_var['olasiliklar']['YOK']
                 
-                # İstatistiksel tahminler (%40 ağırlık)
+                # İstatistiksel tahminler (%30 ağırlık)
                 stats_kg_var = round(
-                    (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 +  # (70 + 55) / 2 = 62.5
-                    (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 10) +  # min(3.05, 2.35) * 10 = 23.5
-                    (min(ev_sahibi_stats['son_5_form'], deplasman_stats['son_5_form']) / 2)  # min(80, 90) / 2 = 40
+                    (ev_sahibi_stats['kg_var_yuzde'] + deplasman_stats['kg_var_yuzde']) / 2 * 0.4 +  # Geçmiş KG Var yüzdesi
+                    (min(ev_sahibi_stats['mac_basi_gol'], deplasman_stats['mac_basi_gol']) * 15) +   # Gol beklentisi etkisi
+                    (min(ev_sahibi_stats['son_5_gol'], deplasman_stats['son_5_gol']) / 5 * 20) +     # Son form etkisi
+                    (max(ev_sahibi_stats['gol_yemeden_yuzde'], deplasman_stats['gol_yemeden_yuzde']) * 0.2)  # Defans etkisi
                 )
-                stats_kg_var = min(stats_kg_var, 90)  # 62.5 + 23.5 + 40 = 126 -> 90 (maximum)
-                stats_kg_yok = 100 - stats_kg_var
+                stats_kg_var = min(stats_kg_var, 85)  # Maximum %85 ile sınırla
                 
                 # Ağırlıklı ortalama
                 tahminler['gol_tahminleri']['KG Var'] = round(
-                    ml_kg_var * ML_WEIGHT +  # ML modeli %60
-                    stats_kg_var * STATS_WEIGHT  # İstatistikler %40
+                    ml_kg_var * ML_WEIGHT +
+                    stats_kg_var * STATS_WEIGHT
                 )
                 tahminler['gol_tahminleri']['KG Yok'] = 100 - tahminler['gol_tahminleri']['KG Var']
 
