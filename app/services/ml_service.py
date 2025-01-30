@@ -2,7 +2,6 @@ from flask import current_app
 import requests
 import pandas as pd
 import os
-from app.services.football_service import FootballService
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 import numpy as np
@@ -17,6 +16,8 @@ class MLService:
     def __init__(self):
         self.model = None
         self.scaler = None
+        # Mevcut dosyaları kullan
+        self.data_path = os.path.join('app', 'data', 'training_data_20250128_152624.csv')
         self.model_path = os.path.join('app', 'models', 'match_prediction_model.joblib')
         self.scaler_path = os.path.join('app', 'models', 'match_prediction_scaler.joblib')
         self.initialize_model()
@@ -61,6 +62,52 @@ class MLService:
         except Exception as e:
             print(f"[ERROR] Model oluşturma hatası: {str(e)}")
             raise Exception("Model oluşturulamadı")
+
+    def update_model(self, new_data):
+        """Mevcut modeli yeni verilerle günceller"""
+        try:
+            print("[INFO] Model güncelleniyor...")
+            
+            # Mevcut verileri yükle
+            if os.path.exists(self.data_path):
+                print(f"[INFO] Mevcut veri dosyası kullanılıyor: {self.data_path}")
+                existing_data = pd.read_csv(self.data_path)
+            else:
+                print("[WARNING] Mevcut veri dosyası bulunamadı, yeni dosya oluşturulacak")
+                existing_data = pd.DataFrame()
+            
+            # Yeni verileri ekle
+            new_df = pd.DataFrame(new_data)
+            combined_data = pd.concat([existing_data, new_df], ignore_index=True)
+            
+            # Tekrarlanan verileri temizle
+            combined_data = combined_data.drop_duplicates()
+            
+            # Güncellenmiş verileri aynı dosyaya kaydet
+            combined_data.to_csv(self.data_path, index=False)
+            print(f"[INFO] Toplam {len(combined_data)} veri noktası kaydedildi: {self.data_path}")
+            
+            # Modeli yeni verilerle güncelle
+            X = combined_data.drop(['result', 'both_scored', 'over_25', 'total_goals', 'first_half_goals'], axis=1)
+            y = combined_data['result']
+            
+            # Verileri ölçeklendir
+            X_scaled = self.scaler.fit_transform(X)
+            
+            # Modeli güncelle
+            self.model.fit(X_scaled, y)
+            
+            # Güncellenmiş modeli aynı dosyalara kaydet
+            joblib.dump(self.model, self.model_path)
+            joblib.dump(self.scaler, self.scaler_path)
+            
+            print(f"[INFO] Model başarıyla güncellendi: {self.model_path}")
+            return True
+            
+        except Exception as e:
+            print(f"[ERROR] Model güncelleme hatası: {str(e)}")
+            print(traceback.format_exc())
+            return False
 
     def predict(self, features):
         """Tahmin yapar"""

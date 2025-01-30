@@ -13,6 +13,7 @@ import joblib
 import scipy.stats as stats
 from scipy.stats import poisson
 from collections import Counter
+from app.services.ml_service import MLService
 
 class FootballService:
     def __init__(self):
@@ -166,26 +167,19 @@ class FootballService:
                     'mesaj': 'Hiç veri toplanamadı'
                 }
             
-            # Verileri CSV'ye kaydet
-            df = pd.DataFrame(training_data)
-            csv_path = os.path.join(self.data_dir, f'training_data_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv')
-            df.to_csv(csv_path, index=False)
-            
-            # Modeli eğit
-            training_result = self.training_service.train_model(csv_path)
-            
-            if training_result['durum'] == 'hata':
+            # MLService'i kullanarak modeli güncelle
+            ml_service = MLService()
+            if ml_service.update_model(training_data):
+                return {
+                    'durum': 'basarili',
+                    'mesaj': f'Toplam {len(training_data)} yeni veri noktası eklendi ve model güncellendi',
+                    'veri_sayisi': len(training_data)
+                }
+            else:
                 return {
                     'durum': 'hata',
-                    'mesaj': f"Model eğitimi başarısız: {training_result['mesaj']}"
+                    'mesaj': 'Model güncellenemedi'
                 }
-            
-            return {
-                'durum': 'basarili',
-                'mesaj': f'Toplam {len(training_data)} maç verisi toplandı ve model eğitildi',
-                'dogruluk': training_result['sonuclar']['mac_sonucu']['dogruluk'],
-                'veri_sayisi': len(training_data)
-            }
             
         except Exception as e:
             print(f"[ERROR] Veri toplama hatası: {str(e)}")
@@ -703,28 +697,3 @@ class FootballService:
                 'durum': 'hata',
                 'mesaj': str(e)
             }
-
-class MLService:
-    def __init__(self):
-        self.model = None
-        self.scaler = None
-        self.initialize_model()
-
-    def initialize_model(self):
-        """Model ve scaler'ı yükler veya yeni oluşturur"""
-        try:
-            self.model = joblib.load('app/models/match_prediction_model.joblib')
-            self.scaler = joblib.load('app/models/match_prediction_scaler.joblib')
-            print("[INFO] Model ve scaler başarıyla yüklendi")
-        except:
-            print("[INFO] Model ve scaler bulunamadı, yeni model oluşturulacak")
-            self._create_new_model()
-    
-    def _create_new_model(self):
-        """Yeni bir model oluşturur"""
-        self.model = RandomForestClassifier(
-            n_estimators=100,
-            max_depth=10,
-            random_state=42
-        )
-        self.scaler = StandardScaler()
