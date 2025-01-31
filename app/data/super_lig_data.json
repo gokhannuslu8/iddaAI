@@ -1,0 +1,142 @@
+{
+    "2023-2024": {
+        "standings": [
+            {
+                "takim_adi": "Fenerbahçe",
+                "oynadigi_mac": 23,
+                "galibiyet": 20,
+                "beraberlik": 2,
+                "maglubiyet": 1,
+                "attigi_gol": 64,
+                "yedigi_gol": 19,
+                "averaj": 45,
+                "puan": 62,
+                "lig_sirasi": 1
+            },
+            {
+                "takim_adi": "Galatasaray",
+                "oynadigi_mac": 23,
+                "galibiyet": 19,
+                "beraberlik": 3,
+                "maglubiyet": 1,
+                "attigi_gol": 52,
+                "yedigi_gol": 17,
+                "averaj": 35,
+                "puan": 60,
+                "lig_sirasi": 2
+            },
+            {
+                "takim_adi": "Trabzonspor",
+                "oynadigi_mac": 23,
+                "galibiyet": 12,
+                "beraberlik": 5,
+                "maglubiyet": 6,
+                "attigi_gol": 39,
+                "yedigi_gol": 31,
+                "averaj": 8,
+                "puan": 41,
+                "lig_sirasi": 3
+            },
+            {
+                "takim_adi": "Beşiktaş",
+                "oynadigi_mac": 23,
+                "galibiyet": 11,
+                "beraberlik": 4,
+                "maglubiyet": 8,
+                "attigi_gol": 37,
+                "yedigi_gol": 32,
+                "averaj": 5,
+                "puan": 37,
+                "lig_sirasi": 4
+            }
+        ],
+        "matches": [
+            {
+                "tarih": "04.02.2024",
+                "ev_sahibi": "Fenerbahçe",
+                "deplasman": "Galatasaray",
+                "skor": "3-2",
+                "sonuc": "1",
+                "sezon": "2023-2024"
+            },
+            {
+                "tarih": "28.01.2024",
+                "ev_sahibi": "Trabzonspor",
+                "deplasman": "Beşiktaş",
+                "skor": "2-1",
+                "sonuc": "1",
+                "sezon": "2023-2024"
+            }
+        ]
+    },
+    "2022-2023": {
+        "standings": [
+            {
+                "takim_adi": "Galatasaray",
+                "oynadigi_mac": 38,
+                "galibiyet": 28,
+                "beraberlik": 5,
+                "maglubiyet": 5,
+                "attigi_gol": 78,
+                "yedigi_gol": 35,
+                "averaj": 43,
+                "puan": 89,
+                "lig_sirasi": 1
+            },
+            {
+                "takim_adi": "Fenerbahçe",
+                "oynadigi_mac": 38,
+                "galibiyet": 26,
+                "beraberlik": 5,
+                "maglubiyet": 7,
+                "attigi_gol": 85,
+                "yedigi_gol": 44,
+                "averaj": 41,
+                "puan": 83,
+                "lig_sirasi": 2
+            },
+            {
+                "takim_adi": "Beşiktaş",
+                "oynadigi_mac": 38,
+                "galibiyet": 22,
+                "beraberlik": 7,
+                "maglubiyet": 9,
+                "attigi_gol": 70,
+                "yedigi_gol": 44,
+                "averaj": 26,
+                "puan": 73,
+                "lig_sirasi": 3
+            },
+            {
+                "takim_adi": "Trabzonspor",
+                "oynadigi_mac": 38,
+                "galibiyet": 17,
+                "beraberlik": 11,
+                "maglubiyet": 10,
+                "attigi_gol": 60,
+                "yedigi_gol": 52,
+                "averaj": 8,
+                "puan": 62,
+                "lig_sirasi": 4
+            }
+        ],
+        "matches": [
+            {
+                "tarih": "28.05.2023",
+                "ev_sahibi": "Fenerbahçe",
+                "deplasman": "Trabzonspor",
+                "skor": "3-1",
+                "sonuc": "1",
+                "sezon": "2022-2023"
+            },
+            {
+                "tarih": "21.05.2023",
+                "ev_sahibi": "Galatasaray",
+                "deplasman": "Beşiktaş",
+                "skor": "2-1",
+                "sonuc": "1",
+                "sezon": "2022-2023"
+            }
+        ]
+    }
+} 
