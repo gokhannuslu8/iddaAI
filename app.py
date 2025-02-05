@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from predict_matches import load_model_and_scaler, get_team_stats, predict_match
+from collect_tff_data import collect_data, train_model
 
 app = Flask(__name__)
 
@@ -40,6 +41,41 @@ def predict():
         
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/model/train/tr', methods=['GET'])
+def train_turkish_model():
+    try:
+        global model, scaler, standings
+        print("\nTürk takımları için model eğitimi başlıyor...")
+        
+        # Veri toplama
+        print("\nVeri toplama aşaması başladı...")
+        matches = collect_data()
+        
+        if matches.empty:
+            return jsonify({
+                'success': False,
+                'error': 'Veri toplanamadı'
+            })
+        
+        # Model eğitimi
+        print("\nModel eğitimi aşaması başladı...")
+        model, scaler = train_model(matches)
+        
+        # Güncel takım istatistiklerini güncelle
+        standings = get_team_stats()
+        
+        return jsonify({
+            'success': True,
+            'message': 'Model başarıyla eğitildi ve güncellendi',
+            'total_matches': len(matches)
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Model eğitimi sırasında hata oluştu: {str(e)}'
+        })
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
