@@ -24,56 +24,59 @@ def collect_data():
     
     # 2022-2023, 2023-2024 ve 2024-2025 sezonları için veri toplama
     seasons = [2022, 2023, 2024]
+    leagues = ['super', 'tff1']  # Her iki lig için veri topla
     
     for season in seasons:
-        print(f"\n{season} sezonu için veri toplama başladı...")
-        
-        # Puan durumu verilerini al
-        standings = tff.get_standings(season)
-        if standings.empty:
-            print(f"{season} sezonu için puan durumu verisi bulunamadı.")
-            continue
+        for league in leagues:
+            print(f"\n{season} sezonu {league} için veri toplama başladı...")
             
-        # Maç verilerini al
-        matches = tff.get_matches(season)
-        if matches.empty:
-            print(f"{season} sezonu için maç verisi bulunamadı.")
-            continue
+            # Puan durumu verilerini al
+            standings = tff.get_standings(season, league)
+            if standings.empty:
+                print(f"{season} sezonu {league} için puan durumu verisi bulunamadı.")
+                continue
+                
+            # Maç verilerini al
+            matches = tff.get_matches(season, league)
+            if matches.empty:
+                print(f"{season} sezonu {league} için maç verisi bulunamadı.")
+                continue
+                
+            # Her maç için ev sahibi ve deplasman takımının istatistiklerini ekle
+            processed_matches = []
+            for _, match in matches.iterrows():
+                home_stats = standings[standings['team'] == match['home_team']].iloc[0]
+                away_stats = standings[standings['team'] == match['away_team']].iloc[0]
+                
+                match_data = {
+                    'date': match['date'],
+                    'home_team': match['home_team'],
+                    'away_team': match['away_team'],
+                    'home_rank': home_stats['rank'],
+                    'away_rank': away_stats['rank'],
+                    'home_points': home_stats['points'],
+                    'away_points': away_stats['points'],
+                    'home_played': home_stats['played'],
+                    'away_played': away_stats['played'],
+                    'home_won': home_stats['won'],
+                    'away_won': away_stats['won'],
+                    'home_drawn': home_stats['drawn'],
+                    'away_drawn': away_stats['drawn'],
+                    'home_lost': home_stats['lost'],
+                    'away_lost': away_stats['lost'],
+                    'home_goals_for': home_stats['goals_for'],
+                    'away_goals_for': away_stats['goals_for'],
+                    'home_goals_against': home_stats['goals_against'],
+                    'away_goals_against': away_stats['goals_against'],
+                    'result': match['result'],
+                    'league_type': league  # Hangi ligden olduğunu belirt
+                }
+                processed_matches.append(match_data)
+                
+            season_matches = pd.DataFrame(processed_matches)
+            print(f"\n{season} sezonu {league} için {len(season_matches)} maç verisi toplandı")
             
-        # Her maç için ev sahibi ve deplasman takımının istatistiklerini ekle
-        processed_matches = []
-        for _, match in matches.iterrows():
-            home_stats = standings[standings['team'] == match['home_team']].iloc[0]
-            away_stats = standings[standings['team'] == match['away_team']].iloc[0]
-            
-            match_data = {
-                'date': match['date'],
-                'home_team': match['home_team'],
-                'away_team': match['away_team'],
-                'home_rank': home_stats['rank'],
-                'away_rank': away_stats['rank'],
-                'home_points': home_stats['points'],
-                'away_points': away_stats['points'],
-                'home_played': home_stats['played'],
-                'away_played': away_stats['played'],
-                'home_won': home_stats['won'],
-                'away_won': away_stats['won'],
-                'home_drawn': home_stats['drawn'],
-                'away_drawn': away_stats['drawn'],
-                'home_lost': home_stats['lost'],
-                'away_lost': away_stats['lost'],
-                'home_goals_for': home_stats['goals_for'],
-                'away_goals_for': away_stats['goals_for'],
-                'home_goals_against': home_stats['goals_against'],
-                'away_goals_against': away_stats['goals_against'],
-                'result': match['result']
-            }
-            processed_matches.append(match_data)
-            
-        season_matches = pd.DataFrame(processed_matches)
-        print(f"\n{season} sezonu için {len(season_matches)} maç verisi toplandı")
-        
-        all_matches = pd.concat([all_matches, season_matches], ignore_index=True)
+            all_matches = pd.concat([all_matches, season_matches], ignore_index=True)
     
     print(f"\nToplam {len(all_matches)} maç verisi toplandı")
     

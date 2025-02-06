@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from predict_matches import load_model_and_scaler, get_team_stats, predict_match
 from collect_tff_data import collect_data, train_model
+from tff_service import TFFService
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -8,11 +10,30 @@ app = Flask(__name__)
 model, scaler = load_model_and_scaler()
 standings = get_team_stats()
 
+def get_team_stats():
+    """Güncel takım istatistiklerini al"""
+    tff = TFFService()
+    all_standings = pd.DataFrame()
+    
+    # Her iki lig için de takımları al
+    for league_type in ['super', 'tff1']:
+        standings = tff.get_standings(2024, league_type)
+        if not standings.empty:
+            all_standings = pd.concat([all_standings, standings], ignore_index=True)
+    
+    return all_standings
+
 @app.route('/api/teams', methods=['GET'])
 def get_teams():
     try:
-        teams = standings['team'].tolist()
-        return jsonify({'success': True, 'teams': teams})
+        # Tüm takımları al ve lig bilgisiyle birlikte döndür
+        teams_data = []
+        for _, team in standings.iterrows():
+            teams_data.append({
+                'name': team['team'],
+                'league': 'Süper Lig' if team['league_type'] == 'super' else 'TFF 1. Lig'
+            })
+        return jsonify({'success': True, 'teams': teams_data})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
 
