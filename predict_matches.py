@@ -4,10 +4,15 @@ import numpy as np
 from tff_service import TFFService
 
 def load_model_and_scaler():
-    # Model ve scaler'ı yükle
-    model = joblib.load('tff_model_20250131_201552.joblib')
-    scaler = joblib.load('tff_scaler_20250131_201552.joblib')
-    return model, scaler
+    """Model ve scaler'ı yükle"""
+    try:
+        # Sabit dosya isimleri kullan
+        model = joblib.load('tff_model.joblib')
+        scaler = joblib.load('tff_scaler.joblib')
+        return model, scaler
+    except Exception as e:
+        print(f"Model yükleme hatası: {str(e)}")
+        return None, None
 
 def get_team_stats():
     """Güncel takım istatistiklerini al"""
@@ -138,6 +143,113 @@ def calculate_btts_probability(home_stats, away_stats, is_different_leagues=Fals
         'KG Var': btts_prob,
         'KG Yok': 100 - btts_prob,
         'analiz': analysis
+    }
+
+def calculate_first_half_goals(home_stats, away_stats, model_prediction, is_different_leagues=False):
+    """İlk yarı gol beklentisini hesapla"""
+    
+    # Takımların maç başı gol ortalamaları
+    home_goals_avg = home_stats['goals_for'] / home_stats['played']
+    away_goals_avg = away_stats['goals_for'] / away_stats['played']
+    
+    # İlk yarı gol oranları (genel olarak ilk yarılarda %40 gol olur)
+    FIRST_HALF_RATIO = 0.40
+    home_first_half_goals = home_goals_avg * FIRST_HALF_RATIO
+    away_first_half_goals = away_goals_avg * FIRST_HALF_RATIO
+    
+    # Form faktörlerini hesapla
+    home_form = home_stats['won'] / home_stats['played']
+    away_form = away_stats['won'] / away_stats['played']
+    
+    # Form etkisini uygula
+    home_first_half_goals *= (0.8 + home_form * 0.4)  # Form maksimum %40 etki etsin
+    away_first_half_goals *= (0.8 + away_form * 0.4)
+    
+    # Ev sahibi avantajı
+    HOME_ADVANTAGE = 1.2  # İlk yarıda ev sahibi avantajı daha belirgin
+    home_first_half_goals *= HOME_ADVANTAGE
+    
+    # Model tahminlerini kullan
+    model_home_prob = model_prediction[0]  # Ev sahibi kazanma olasılığı
+    model_draw_prob = model_prediction[1]  # Beraberlik olasılığı
+    model_away_prob = model_prediction[2]  # Deplasman kazanma olasılığı
+    
+    # Model tahminlerine göre gol beklentilerini ayarla
+    if model_home_prob > 0.5:  # Model ev sahibinin kazanacağını düşünüyorsa
+        home_first_half_goals *= (1 + (model_home_prob - 0.5))
+        away_first_half_goals *= (1 - (model_home_prob - 0.5))
+    elif model_away_prob > 0.5:  # Model deplasmanın kazanacağını düşünüyorsa
+        home_first_half_goals *= (1 - (model_away_prob - 0.5))
+        away_first_half_goals *= (1 + (model_away_prob - 0.5))
+    else:  # Beraberliğe yakın bir tahmin
+        avg_goals = (home_first_half_goals + away_first_half_goals) / 2
+        home_first_half_goals = away_first_half_goals = avg_goals
+    
+    # Farklı ligler için düzeltme
+    if is_different_leagues:
+        if home_stats['league_type'] == 'super':
+            home_first_half_goals *= 1.3  # Süper Lig ev sahibi daha kolay gol atar
+            away_first_half_goals *= 0.7  # Alt lig takımı daha zor gol atar
+        else:
+            home_first_half_goals *= 0.7  # Alt lig ev sahibi daha zor gol atar
+            away_first_half_goals *= 1.3  # Süper Lig takımı daha kolay gol atar
+    
+    # Toplam ilk yarı gol beklentisi
+    total_first_half_goals = home_first_half_goals + away_first_half_goals
+    
+    # Olasılık hesaplamaları
+    probabilities = {
+        '0.5 Alt': 0,
+        '0.5 Üst': 0,
+        '1.5 Alt': 0,
+        '1.5 Üst': 0,
+        '2.5 Alt': 0,
+        '2.5 Üst': 0
+    }
+    
+    # Poisson dağılımı kullanarak olasılıkları hesapla
+    def poisson_prob(k, lambda_param):
+        return np.exp(-lambda_param) * (lambda_param**k) / np.math.factorial(k)
+    
+    # Her bir sınır için olasılıkları hesapla
+    for goals in range(6):  # 0'dan 5'e kadar
+        prob = poisson_prob(goals, total_first_half_goals)
+        
+        if goals <= 0:
+            probabilities['0.5 Alt'] += prob
+        else:
+            probabilities['0.5 Üst'] += prob
+            
+        if goals <= 1:
+            probabilities['1.5 Alt'] += prob
+        else:
+            probabilities['1.5 Üst'] += prob
+            
+        if goals <= 2:
+            probabilities['2.5 Alt'] += prob
+        else:
+            probabilities['2.5 Üst'] += prob
+    
+    # Yüzdelik değerlere çevir
+    for key in probabilities:
+        probabilities[key] = round(probabilities[key] * 100)
+    
+    return {
+        'beklenen_goller': round(total_first_half_goals, 2),
+        'ev_sahibi_beklenen': round(home_first_half_goals, 2),
+        'deplasman_beklenen': round(away_first_half_goals, 2),
+        'olasiliklar': probabilities,
+        'analiz': {
+            'ev_form_etkisi': round(home_form, 2),
+            'deplasman_form_etkisi': round(away_form, 2),
+            'ev_sahibi_avantaji': HOME_ADVANTAGE,
+            'model_tahmin_etkisi': {
+                'ev_kazanma': round(model_home_prob, 2),
+                'beraberlik': round(model_draw_prob, 2),
+                'deplasman_kazanma': round(model_away_prob, 2)
+            },
+            'lig_seviyesi_farki': is_different_leagues
+        }
     }
 
 def predict_match(model, scaler, standings, home_team, away_team):
@@ -287,8 +399,8 @@ def predict_match(model, scaler, standings, home_team, away_team):
     # Gol sınırları olasılıklarını hesapla
     goal_limits = calculate_goal_limits(home_goals_avg, away_goals_avg)
     
-    # İlk yarı gol beklentisi (toplam beklentinin %35'i)
-    first_half_expected_goals = round((predicted_home_goals + predicted_away_goals) * 0.35, 2)
+    # İlk yarı gol beklentisini hesapla (model tahminlerini de gönder)
+    first_half_goals = calculate_first_half_goals(home_stats, away_stats, model_probabilities, is_different_leagues)
     
     # Karşılıklı gol olasılıklarını hesapla
     btts_probs = calculate_btts_probability(home_stats, away_stats, is_different_leagues)
@@ -297,7 +409,7 @@ def predict_match(model, scaler, standings, home_team, away_team):
     additional_stats = {
         'ml_guven': round(max(model_probabilities) * 100),
         'ml_kullanildi': True,
-        'beklenen_ilk_yari_gol': first_half_expected_goals,
+        'ilk_yari_gol_analizi': first_half_goals,
         'farkli_lig_karsilasmasi': is_different_leagues,
         'karsilikli_gol': btts_probs
     }
@@ -313,6 +425,7 @@ def predict_match(model, scaler, standings, home_team, away_team):
             'ev_sahibi_detay': home_team_stats,
             'deplasman_detay': away_team_stats,
             'gol_sinirlari': goal_limits,
+            'ilk_yari_gol_analizi': first_half_goals,
             'ek_istatistikler': additional_stats
         },
         'success': True

@@ -108,28 +108,44 @@ class TrainingService:
                     'model': VotingClassifier(
                         estimators=[
                             ('xgb1', XGBClassifier(
-                                n_estimators=300,
-                                max_depth=4,
-                                learning_rate=0.1,
+                                n_estimators=500,
+                                max_depth=6,
+                                learning_rate=0.05,
                                 subsample=0.8,
                                 colsample_bytree=0.8,
+                                min_child_weight=3,
+                                gamma=0.1,
                                 random_state=42
                             )),
                             ('xgb2', XGBClassifier(
-                                n_estimators=300,
-                                max_depth=6,
-                                learning_rate=0.05,
+                                n_estimators=500,
+                                max_depth=4,
+                                learning_rate=0.1,
                                 subsample=0.9,
                                 colsample_bytree=0.9,
+                                min_child_weight=2,
+                                gamma=0.2,
                                 random_state=43
+                            )),
+                            ('xgb3', XGBClassifier(
+                                n_estimators=500,
+                                max_depth=5,
+                                learning_rate=0.075,
+                                subsample=0.85,
+                                colsample_bytree=0.85,
+                                min_child_weight=4,
+                                gamma=0.15,
+                                random_state=44
                             )),
                             ('lr', LogisticRegression(
                                 C=0.1,
-                                max_iter=1000,
+                                max_iter=2000,
+                                class_weight='balanced',
                                 random_state=42
                             ))
                         ],
-                        voting='soft'
+                        voting='soft',
+                        weights=[3, 2, 2, 1]  # XGBoost modellerine daha fazla ağırlık ver
                     )
                 },
                 'kg_var': {
@@ -185,6 +201,50 @@ class TrainingService:
                     )
                 }
             }
+            
+            # Feature engineering geliştirmeleri
+            df['recent_form_ratio'] = df['home_team_last_5_form'] / df['away_team_last_5_form']
+            df['goal_efficiency'] = (df['home_team_goals_scored'] / df['home_team_played']) / (df['away_team_goals_scored'] / df['away_team_played'])
+            df['defense_efficiency'] = (df['home_team_goals_conceded'] / df['home_team_played']) / (df['away_team_goals_conceded'] / df['away_team_played'])
+            df['win_rate_ratio'] = df['home_win_rate'] / df['away_win_rate']
+            
+            # Sezon içi trend
+            df['home_trend'] = df['home_team_last_5_form'] - df['home_team_form']
+            df['away_trend'] = df['away_team_last_5_form'] - df['away_team_form']
+            
+            # Yeni özellikleri listeye ekle
+            features.extend([
+                'recent_form_ratio', 'goal_efficiency', 'defense_efficiency',
+                'win_rate_ratio', 'home_trend', 'away_trend'
+            ])
+            
+            # Model güven skorunu hesaplama fonksiyonunu güncelle
+            def calculate_confidence_score(probabilities, power_diff, form_diff):
+                max_prob = max(probabilities)
+                base_confidence = max_prob * 100
+                
+                # Güç ve form farklarına göre güven artışı
+                power_confidence = min(abs(power_diff) * 20, 15)  # Maksimum %15 artış
+                form_confidence = min(abs(form_diff) * 15, 10)    # Maksimum %10 artış
+                
+                # Eğer en yüksek olasılık belirli bir eşiğin üzerindeyse ek bonus
+                prob_bonus = 10 if max_prob > 0.6 else (5 if max_prob > 0.5 else 0)
+                
+                # Olasılıklar arasındaki fark ne kadar büyükse o kadar güvenilir
+                prob_diff = max_prob - sorted(probabilities)[-2]  # En yüksek ile ikinci en yüksek arasındaki fark
+                diff_bonus = min(prob_diff * 100 * 0.5, 10)  # Maksimum %10 bonus
+                
+                total_confidence = base_confidence + power_confidence + form_confidence + prob_bonus + diff_bonus
+                
+                # Maksimum %95 ile sınırla
+                return min(round(total_confidence), 95)
+                
+            # Model tahmininde güven skorunu güncelle
+            ml_guven = calculate_confidence_score(
+                probabilities,
+                power_diff,
+                form_diff
+            )
             
             # Her model için eğitim yap
             results = {}
@@ -303,6 +363,24 @@ class TrainingService:
             power_diff = round(home_power - away_power, 2)
             form_diff = round((home_team_stats.get('form', 0) - away_team_stats.get('form', 0)) / 100, 2)
             
+            # Güven skoru hesaplama
+            max_prob = max(probabilities)
+            base_confidence = max_prob * 100
+            
+            # Güç ve form farklarına göre güven artışı
+            power_confidence = min(abs(power_diff) * 20, 15)  # Maksimum %15 artış
+            form_confidence = min(abs(form_diff) * 15, 10)    # Maksimum %10 artış
+            
+            # Eğer en yüksek olasılık belirli bir eşiğin üzerindeyse ek bonus
+            prob_bonus = 10 if max_prob > 0.6 else (5 if max_prob > 0.5 else 0)
+            
+            # Olasılıklar arasındaki fark ne kadar büyükse o kadar güvenilir
+            prob_diff = max_prob - sorted(probabilities)[-2]  # En yüksek ile ikinci en yüksek arasındaki fark
+            diff_bonus = min(prob_diff * 100 * 0.5, 10)  # Maksimum %10 bonus
+            
+            # Toplam güven skoru
+            ml_guven = min(round(base_confidence + power_confidence + form_confidence + prob_bonus + diff_bonus), 95)
+            
             # Gol beklentileri hesaplama
             home_goals_per_game = home_team_stats.get('mac_basi_gol', 0)
             away_goals_per_game = away_team_stats.get('mac_basi_gol', 0)
@@ -323,14 +401,6 @@ class TrainingService:
             
             # Toplam gol beklentisi
             total_expected_goals = round(home_expected_goals + away_expected_goals, 2)
-            
-            # İlk yarı gol beklentisi
-            home_first_half = home_team_stats.get('first_half_goals_per_game', home_expected_goals * 0.35)
-            away_first_half = away_team_stats.get('first_half_goals_per_game', away_expected_goals * 0.35)
-            expected_first_half_goals = round(home_first_half + away_first_half, 2)
-            
-            print(f"[DEBUG] Ev sahibi beklenen gol: {home_expected_goals}, Deplasman beklenen gol: {away_expected_goals}")
-            print(f"[DEBUG] Toplam beklenen gol: {total_expected_goals}, İlk yarı beklenen: {expected_first_half_goals}")
             
             # Gol aralıkları için olasılıklar hesaplama
             def calculate_goal_probabilities(expected_goals):
@@ -381,12 +451,6 @@ class TrainingService:
             # Gol olasılıklarını hesapla
             goal_probs = calculate_goal_probabilities(total_expected_goals)
             
-            # İlk yarı gol olasılıkları
-            first_half_probs = calculate_goal_probabilities(expected_first_half_goals)
-            
-            print(f"[DEBUG] Gol olasılıkları: {goal_probs}")
-            print(f"[DEBUG] İlk yarı gol olasılıkları: {first_half_probs}")
-            
             # Gol aralıkları için olasılıklar
             under_15 = goal_probs['under_15']
             over_15 = goal_probs['over_15']
@@ -394,6 +458,138 @@ class TrainingService:
             over_25 = goal_probs['over_25']
             under_35 = goal_probs['under_35']
             over_35 = goal_probs['over_35']
+            
+            # İlk yarı gol beklentisi hesaplama
+            home_first_half_goals = home_team_stats.get('ilk_yari_gol_ortalama', home_expected_goals * 0.4)
+            away_first_half_goals = away_team_stats.get('ilk_yari_gol_ortalama', away_expected_goals * 0.4)
+            home_first_half_conceded = home_team_stats.get('ilk_yari_yenilen_ortalama', home_conceded_per_game * 0.4)
+            away_first_half_conceded = away_team_stats.get('ilk_yari_yenilen_ortalama', away_conceded_per_game * 0.4)
+            
+            # Form etkisini hesapla
+            home_form = home_team_stats.get('son_5_form', 50) / 100
+            away_form = away_team_stats.get('son_5_form', 50) / 100
+            
+            # Ev sahibi avantajı
+            HOME_ADVANTAGE = 1.2
+            expected_home_first_half = home_first_half_goals * HOME_ADVANTAGE
+            expected_away_first_half = away_first_half_goals
+            
+            # Form etkisini uygula
+            expected_home_first_half *= (0.8 + home_form * 0.4)
+            expected_away_first_half *= (0.8 + away_form * 0.4)
+            
+            # Savunma zafiyetlerini hesaba kat
+            defense_factor_home = away_first_half_conceded / 0.75  # 0.75 ortalama ilk yarı gol sayısı
+            defense_factor_away = home_first_half_conceded / 0.75
+            
+            # Ev sahibi ve deplasman beklentilerini güncelle
+            expected_home_first_half = round(expected_home_first_half * defense_factor_away * 1.1, 2)  # Ev sahibine %10 bonus
+            expected_away_first_half = round(expected_away_first_half * defense_factor_home * 0.9, 2)  # Deplasmana %10 handikap
+            
+            # Toplam ilk yarı gol beklentisi
+            expected_first_half_goals = round(expected_home_first_half + expected_away_first_half, 2)
+            
+            # İlk yarı gol olasılıkları için Poisson dağılımı
+            first_half_probs = {
+                '0.5 Alt': 0,
+                '0.5 Üst': 0,
+                '1.5 Alt': 0,
+                '1.5 Üst': 0,
+                '2.5 Alt': 0,
+                '2.5 Üst': 0
+            }
+            
+            # Her bir sınır için olasılıkları hesapla
+            # Düzeltilmiş beklenti hesabı
+            duzeltilmis_beklenti = expected_first_half_goals * (
+                ((0.8 + home_form * 0.4) + (0.8 + away_form * 0.4)) / 2 * 
+                HOME_ADVANTAGE * 
+                (defense_factor_away + defense_factor_home) / 2
+            )
+            
+            # Mantıklı sınırlar için son kontroller
+            # 0.5 için
+            if duzeltilmis_beklenti > 1.0:
+                first_half_probs['0.5 Alt'] = max(20, min(30, first_half_probs['0.5 Alt']))  # Üst sınırı 30'a düşürdük
+                first_half_probs['0.5 Üst'] = 100 - first_half_probs['0.5 Alt']
+            else:
+                first_half_probs['0.5 Alt'] = max(25, min(40, first_half_probs['0.5 Alt']))
+                first_half_probs['0.5 Üst'] = 100 - first_half_probs['0.5 Alt']
+                
+            # 1.5 için
+            if duzeltilmis_beklenti > 1.0:
+                first_half_probs['1.5 Alt'] = max(50, min(60, first_half_probs['1.5 Alt']))  # Sınırları düşürdük
+                first_half_probs['1.5 Üst'] = 100 - first_half_probs['1.5 Alt']
+            else:
+                first_half_probs['1.5 Alt'] = max(60, min(70, first_half_probs['1.5 Alt']))
+                first_half_probs['1.5 Üst'] = 100 - first_half_probs['1.5 Alt']
+                
+            # 2.5 için
+            if duzeltilmis_beklenti > 1.0:
+                first_half_probs['2.5 Alt'] = max(85, min(92, first_half_probs['2.5 Alt']))
+            else:
+                first_half_probs['2.5 Alt'] = max(90, min(95, first_half_probs['2.5 Alt']))
+            first_half_probs['2.5 Üst'] = 100 - first_half_probs['2.5 Alt']
+            
+            # Düzeltilmiş beklenti 1.0'dan büyükse 0.5 Üst olasılığını artır
+            if duzeltilmis_beklenti > 1.0:
+                current_05_ust = first_half_probs['0.5 Üst']
+                first_half_probs['0.5 Üst'] = min(80, current_05_ust + 10)  # 10 puan artır ama max 80
+                first_half_probs['0.5 Alt'] = 100 - first_half_probs['0.5 Üst']
+            
+            # Form ve güç farkına göre düzeltmeler
+            power_adjustment = abs(power_diff) * 0.1  # Güç farkı etkisi
+            form_adjustment = abs(form_diff) * 0.05   # Form farkı etkisi
+            
+            # Eğer ev sahibi daha güçlü/formda ise gol olasılıkları artar
+            if power_diff > 0 or form_diff > 0:
+                for limit in ['0.5', '1.5', '2.5']:
+                    alt_prob = first_half_probs[f'{limit} Alt']
+                    ust_prob = first_half_probs[f'{limit} Üst']
+                    
+                    # Alt olasılığını azalt, üst olasılığını artır
+                    adjustment = (power_adjustment + form_adjustment) * 100
+                    first_half_probs[f'{limit} Alt'] = max(5, round(alt_prob * (1 - adjustment/200)))  # Düzeltme faktörünü yarıya indirdik
+                    first_half_probs[f'{limit} Üst'] = min(95, round(100 - first_half_probs[f'{limit} Alt']))
+            
+            # Olasılıkları mantıklı sınırlara çek
+            for limit in ['0.5', '1.5', '2.5']:
+                alt_prob = first_half_probs[f'{limit} Alt']
+                ust_prob = first_half_probs[f'{limit} Üst']
+                
+                # 0.5 için minimum/maksimum sınırlar
+                if limit == '0.5':
+                    first_half_probs[f'{limit} Alt'] = max(25, min(35, alt_prob))  # 0.5 Alt için daha dar aralık
+                    first_half_probs[f'{limit} Üst'] = 100 - first_half_probs[f'{limit} Alt']
+                # 1.5 için minimum/maksimum sınırlar
+                elif limit == '1.5':
+                    first_half_probs[f'{limit} Alt'] = max(65, min(80, alt_prob))  # 1.5 Alt için daha dar aralık
+                    first_half_probs[f'{limit} Üst'] = 100 - first_half_probs[f'{limit} Alt']
+                # 2.5 için minimum/maksimum sınırlar
+                else:
+                    first_half_probs[f'{limit} Alt'] = max(85, min(95, alt_prob))  # 2.5 Alt için aynı aralık
+                    first_half_probs[f'{limit} Üst'] = 100 - first_half_probs[f'{limit} Alt']
+            
+            # Detaylı ilk yarı analizi
+            first_half_analysis = {
+                'beklenen_goller': expected_first_half_goals,
+                'ev_sahibi_beklenen': round(expected_home_first_half, 2),
+                'deplasman_beklenen': round(expected_away_first_half, 2),
+                'olasiliklar': first_half_probs,
+                'analiz': {
+                    'ev_form_etkisi': round(home_form, 2),
+                    'deplasman_form_etkisi': round(away_form, 2),
+                    'ev_sahibi_avantaji': HOME_ADVANTAGE,
+                    'ev_ilk_yari_gol_ort': round(home_first_half_goals, 2),
+                    'dep_ilk_yari_gol_ort': round(away_first_half_goals, 2),
+                    'ev_ilk_yari_yenilen_ort': round(home_first_half_conceded, 2),
+                    'dep_ilk_yari_yenilen_ort': round(away_first_half_conceded, 2),
+                    'savunma_etkisi': {
+                        'ev_sahibi': round(defense_factor_away, 2),
+                        'deplasman': round(defense_factor_home, 2)
+                    }
+                }
+            }
             
             # İlk yarı tahminleri
             iy_home = probabilities[1] * 0.6  # Ev sahibi kazanma olasılığının %60'ı
@@ -625,6 +821,7 @@ class TrainingService:
                         'iyX': int(round(iy_draw * 100)),
                         'iy2': int(round(iy_away * 100))
                     },
+                    'ilk_yari_detayli': first_half_analysis,
                     'iy_ms': {
                         'olasiliklar': {k: int(round(v)) for k, v in iy_ms_olasiliklar.items()},
                         'analizler': {
@@ -635,8 +832,6 @@ class TrainingService:
                             'skor_degismez': int(round(iy_ms_analizler['skor_degismez']))
                         }
                     },
-                    'beklenen_toplam_gol': int(round(total_expected_goals)),
-                    'beklenen_ilk_yari_gol': int(round(expected_first_half_goals)),
                     'gol_beklentisi': {
                         'ev_sahibi': int(round(home_expected_goals)),
                         'deplasman': int(round(away_expected_goals)),
@@ -671,7 +866,7 @@ class TrainingService:
                         'takim2_mac_basi_gol': round(away_goals_per_game, 2),
                         'beklenen_toplam_gol': round(total_expected_goals, 2),
                         'beklenen_ilk_yari_gol': round(expected_first_half_goals, 2),
-                        'ml_guven': int(round(max(probabilities) * 100)),
+                        'ml_guven': ml_guven,
                         'ml_kullanildi': True,
                         'yakin_guc': abs(power_diff) < 0.3,
                         'ev_sahibi_guclu': power_diff > 0.3

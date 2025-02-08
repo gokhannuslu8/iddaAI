@@ -145,16 +145,15 @@ def train_model(matches):
     print("\nConfusion Matrix:")
     print(cm)
     
-    # Modeli ve scaler'ı kaydet
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    model_filename = f"tff_model_{timestamp}.joblib"
-    scaler_filename = f"tff_scaler_{timestamp}.joblib"
+    # Modeli ve scaler'ı sabit isimlerle kaydet
+    model_filename = "tff_model.joblib"
+    scaler_filename = "tff_scaler.joblib"
     
     joblib.dump(model, model_filename)
     joblib.dump(scaler, scaler_filename)
     
-    print(f"\nModel kaydedildi: {model_filename}")
-    print(f"Scaler kaydedildi: {scaler_filename}")
+    print(f"\nModel güncellendi: {model_filename}")
+    print(f"Scaler güncellendi: {scaler_filename}")
     
     return model, scaler
 
