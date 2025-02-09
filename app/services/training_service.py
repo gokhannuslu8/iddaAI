@@ -402,6 +402,59 @@ class TrainingService:
             # Toplam gol beklentisi
             total_expected_goals = round(home_expected_goals + away_expected_goals, 2)
             
+            # İlk yarı gol olasılıkları için Poisson dağılımı
+            first_half_probs = {
+                '0.5 Alt': 0,
+                '0.5 Üst': 0,
+                '1.5 Alt': 0,
+                '1.5 Üst': 0,
+                '2.5 Alt': 0,
+                '2.5 Üst': 0
+            }
+            
+            # Poisson dağılımı kullanarak olasılıkları hesapla
+            def poisson_prob(k, lambda_param):
+                return np.exp(-lambda_param) * (lambda_param**k) / np.math.factorial(k)
+            
+            # Her bir gol sayısı için olasılıkları hesapla (0'dan 5'e kadar)
+            first_half_goal_probs = [poisson_prob(i, total_expected_goals) for i in range(6)]
+            
+            # Alt/Üst olasılıklarını hesapla
+            first_half_probs['0.5 Alt'] = round(first_half_goal_probs[0] * 100)  # Sadece 0 gol
+            first_half_probs['0.5 Üst'] = round((1 - first_half_goal_probs[0]) * 100)  # 1 veya daha fazla gol
+            
+            first_half_probs['1.5 Alt'] = round(sum(first_half_goal_probs[:2]) * 100)  # 0 ve 1 gol
+            first_half_probs['1.5 Üst'] = round((1 - sum(first_half_goal_probs[:2])) * 100)  # 2 veya daha fazla gol
+            
+            first_half_probs['2.5 Alt'] = round(sum(first_half_goal_probs[:3]) * 100)  # 0, 1 ve 2 gol
+            first_half_probs['2.5 Üst'] = round((1 - sum(first_half_goal_probs[:3])) * 100)  # 3 veya daha fazla gol
+            
+            # Form ve güç farkına göre minimal düzeltmeler
+            power_adjustment = abs(power_diff) * 0.05  # Güç farkı etkisini azalttık
+            form_adjustment = abs(form_diff) * 0.03   # Form farkı etkisini azalttık
+            
+            # Ev sahibi daha güçlü/formda ise gol olasılıkları artar
+            if power_diff > 0 or form_diff > 0:
+                total_adjustment = min((power_adjustment + form_adjustment), 0.1)  # Maksimum %10 etki
+                
+                for limit in ['0.5', '1.5', '2.5']:
+                    alt_prob = first_half_probs[f'{limit} Alt']
+                    ust_prob = first_half_probs[f'{limit} Üst']
+                    
+                    alt_reduction = round(alt_prob * total_adjustment)
+                    first_half_probs[f'{limit} Alt'] = max(5, alt_prob - alt_reduction)
+                    first_half_probs[f'{limit} Üst'] = min(95, ust_prob + alt_reduction)
+            
+            # İlk yarı gol olasılıkları için Poisson dağılımı
+            first_half_probs = {
+                '0.5 Alt': 0,
+                '0.5 Üst': 0,
+                '1.5 Alt': 0,
+                '1.5 Üst': 0,
+                '2.5 Alt': 0,
+                '2.5 Üst': 0
+            }
+            
             # Gol aralıkları için olasılıklar hesaplama
             def calculate_goal_probabilities(expected_goals):
                 # Poisson dağılımı kullanarak her gol sayısı için olasılıkları hesapla
@@ -649,11 +702,11 @@ class TrainingService:
                 '1/X': round(iy_home * probabilities[0] * 0.8, 2),  # Ev sahibi üstünlüğünü koruyamaz
                 '1/2': round(iy_home * probabilities[2] * 0.5, 2),  # Ev sahibi üstünlüğünü tamamen kaybeder
                 'X/1': round(iy_draw * probabilities[1] * 1.1, 2),  # Beraberlikten ev sahibi açılır
-                'X/X': round(iy_draw * probabilities[0] * 1.3, 2),  # Beraberlik devam eder
+                'X/X': round(iy_draw * probabilities[0] * 1.2, 2),  # Beraberlik devam eder
                 'X/2': round(iy_draw * probabilities[2] * 1.1, 2),  # Beraberlikten deplasman açılır
                 '2/1': round(iy_away * probabilities[1] * 0.5, 2),  # Deplasman üstünlüğünü tamamen kaybeder
                 '2/X': round(iy_away * probabilities[0] * 0.8, 2),  # Deplasman üstünlüğünü koruyamaz
-                '2/2': round(iy_away * probabilities[2] * 1.2, 2)   # Deplasman üstünlüğünü devam ettirir
+                '2/2': round(iy_draw * probabilities[2] * 1.2, 2)   # Deplasman üstünlüğünü devam ettirir
             }
             
             # Toplam olasılığı 100'e normalize et
