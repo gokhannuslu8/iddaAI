@@ -30,79 +30,87 @@ class TFFService:
             
             if not data or 'response' not in data:
                 print("API'den veri alınamadı!")
-                return []
+                return pd.DataFrame()
                 
             standings_data = []
             standings = data['response'][0]['league']['standings'][0]
             
             for team in standings:
                 team_data = {
-                    'takim_adi': team['team']['name'],
-                    'oynadigi_mac': team['all']['played'],
-                    'galibiyet': team['all']['win'],
-                    'beraberlik': team['all']['draw'],
-                    'maglubiyet': team['all']['lose'],
-                    'attigi_gol': team['all']['goals']['for'],
-                    'yedigi_gol': team['all']['goals']['against'],
-                    'averaj': team['goalsDiff'],
-                    'puan': team['points'],
-                    'lig_sirasi': team['rank']
+                    'team': team['team']['name'],
+                    'rank': team['rank'],
+                    'played': team['all']['played'],
+                    'won': team['all']['win'],
+                    'drawn': team['all']['draw'],
+                    'lost': team['all']['lose'],
+                    'goals_for': team['all']['goals']['for'],
+                    'goals_against': team['all']['goals']['against'],
+                    'points': team['points']
                 }
                 standings_data.append(team_data)
-                print(f"Takım verisi eklendi: {team_data['takim_adi']}")
+                print(f"Takım verisi eklendi: {team_data['team']}")
             
-            return standings_data
+            return pd.DataFrame(standings_data)
             
         except Exception as e:
             print(f"Puan durumu çekme hatası: {str(e)}")
-            return []
+            return pd.DataFrame()
     
     @staticmethod
-    def get_matches(season="2023"):
+    def get_matches(season="2023", league='super'):
         """Sezon maçlarını çeker"""
         try:
             url = f"{TFFService.BASE_URL}/fixtures"
+            league_id = TFFService.SUPER_LIG_ID if league == 'super' else TFFService.TFF1_LIG_ID
+            
             params = {
-                'league': TFFService.SUPER_LIG_ID,
+                'league': league_id,
                 'season': season,
                 'status': 'FT'  # Sadece tamamlanmış maçları al
             }
             
+            print(f"\nAPI isteği yapılıyor: {url}")
+            print(f"Parametreler: {params}")
+            print(f"Headers: {TFFService.HEADERS}")
+            
             response = requests.get(url, headers=TFFService.HEADERS, params=params)
+            print(f"API yanıt kodu: {response.status_code}")
+            
             data = response.json()
             
             if not data or 'response' not in data:
                 print("API'den veri alınamadı!")
-                return []
+                return pd.DataFrame()
                 
             matches_data = []
             
             for match in data['response']:
                 try:
                     match_data = {
-                        'tarih': datetime.fromtimestamp(match['fixture']['timestamp']).strftime('%d.%m.%Y'),
-                        'ev_sahibi': match['teams']['home']['name'],
-                        'deplasman': match['teams']['away']['name'],
-                        'skor': f"{match['goals']['home']}-{match['goals']['away']}",
-                        'sezon': season
+                        'date': datetime.fromtimestamp(match['fixture']['timestamp']).strftime('%Y-%m-%d'),
+                        'home_team': match['teams']['home']['name'],
+                        'away_team': match['teams']['away']['name'],
+                        'score': f"{match['goals']['home']}-{match['goals']['away']}",
+                        'season': season,
+                        'league': league
                     }
                     
                     # Sonucu belirle
                     if match['goals']['home'] > match['goals']['away']:
-                        match_data['sonuc'] = '1'
+                        match_data['result'] = 'H'  # Home win
                     elif match['goals']['home'] == match['goals']['away']:
-                        match_data['sonuc'] = 'X'
+                        match_data['result'] = 'D'  # Draw
                     else:
-                        match_data['sonuc'] = '2'
+                        match_data['result'] = 'A'  # Away win
                         
                     matches_data.append(match_data)
-                    print(f"Maç verisi eklendi: {match_data['ev_sahibi']} vs {match_data['deplasman']}")
+                    print(f"Maç verisi eklendi: {match_data['home_team']} vs {match_data['away_team']}")
                 except Exception as e:
                     print(f"Maç işleme hatası: {str(e)}")
                     continue
             
-            return matches_data
+            return pd.DataFrame(matches_data)
             
         except Exception as e:
             print(f"Maç verisi çekme hatası: {str(e)}")
-            return [] 
+            return pd.DataFrame() 

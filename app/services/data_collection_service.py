@@ -6,9 +6,12 @@ import time
 
 class DataCollectionService:
     def __init__(self):
-        self.data_path = 'app/data'
-        self.matches_file = f'{self.data_path}/matches_data.csv'
-        os.makedirs(self.data_path, exist_ok=True)
+        self.data_path = os.path.join('app', 'data')
+        self.matches_file = os.path.join(self.data_path, 'matches_data.csv')
+        
+        # Dizini oluştur
+        if not os.path.exists(self.data_path):
+            os.makedirs(self.data_path)
         
     def collect_historical_matches(self, days_back=30):
         """Son X günün maç sonuçlarını toplar"""
@@ -158,4 +161,71 @@ class DataCollectionService:
             print(f"{len(matches)} maç verisi kaydedildi.")
             
         except Exception as e:
-            print(f"Veri kaydetme hatası: {str(e)}") 
+            print(f"Veri kaydetme hatası: {str(e)}")
+
+    def _merge_match_and_standings_data(self, matches_df, standings_df):
+        """Maç ve puan durumu verilerini birleştirir"""
+        try:
+            merged_data = []
+            
+            for _, match in matches_df.iterrows():
+                # Ev sahibi ve deplasman takımlarının puan durumu verilerini bul
+                home_stats = standings_df[standings_df['team'] == match['home_team']].iloc[0]
+                away_stats = standings_df[standings_df['team'] == match['away_team']].iloc[0]
+                
+                # Maç verisi oluştur
+                match_data = {
+                    'date': match['date'],
+                    'home_team': match['home_team'],
+                    'away_team': match['away_team'],
+                    'home_rank': home_stats['rank'],
+                    'away_rank': away_stats['rank'],
+                    'home_points': home_stats['points'],
+                    'away_points': away_stats['points'],
+                    'home_played': home_stats['played'],
+                    'away_played': away_stats['played'],
+                    'home_won': home_stats['won'],
+                    'away_won': away_stats['won'],
+                    'home_drawn': home_stats['drawn'],
+                    'away_drawn': away_stats['drawn'],
+                    'home_lost': home_stats['lost'],
+                    'away_lost': away_stats['lost'],
+                    'home_goals_for': home_stats['goals_for'],
+                    'away_goals_for': away_stats['goals_for'],
+                    'home_goals_against': home_stats['goals_against'],
+                    'away_goals_against': away_stats['goals_against'],
+                    'result': match['result']
+                }
+                
+                merged_data.append(match_data)
+            
+            return pd.DataFrame(merged_data)
+            
+        except Exception as e:
+            print(f"Veri birleştirme hatası: {str(e)}")
+            return pd.DataFrame()
+
+    def load_saved_data(self):
+        """Kaydedilmiş veriyi yükler"""
+        try:
+            # Önce matches_data.csv'yi kontrol et
+            if os.path.exists(self.matches_file):
+                df = pd.read_csv(self.matches_file)
+                print(f"\n[INFO] {len(df)} maç verisi yüklendi")
+                return df
+            
+            # Eğer matches_data.csv yoksa, data klasöründeki en son training verisi dosyasını kontrol et
+            csv_files = [f for f in os.listdir(self.data_path) if f.startswith('training_data_')]
+            if csv_files:
+                latest_file = sorted(csv_files)[-1]
+                file_path = os.path.join(self.data_path, latest_file)
+                df = pd.read_csv(file_path)
+                print(f"\n[INFO] {len(df)} maç verisi yüklendi ({latest_file})")
+                return df
+                
+            print("\n[INFO] Kaydedilmiş veri bulunamadı")
+            return pd.DataFrame()
+            
+        except Exception as e:
+            print(f"[ERROR] Veri yükleme hatası: {str(e)}")
+            return pd.DataFrame() 

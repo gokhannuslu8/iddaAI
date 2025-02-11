@@ -10,6 +10,8 @@ import os
 from datetime import datetime
 from scipy.stats import poisson
 import time
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.utils.class_weight import compute_class_weight
 
 class TrainingService:
     def __init__(self):
@@ -35,10 +37,14 @@ class TrainingService:
             
             # Özellikler ve hedef değişkeni ayır
             features = [
-                'home_team_form', 'home_team_goals_scored', 'home_team_goals_conceded',
-                'home_team_wins', 'home_team_draws', 'home_team_losses',
-                'away_team_form', 'away_team_goals_scored', 'away_team_goals_conceded',
-                'away_team_wins', 'away_team_draws', 'away_team_losses'
+                'home_team_form', 'away_team_form',
+                'home_team_goals_scored', 'away_team_goals_scored',
+                'home_team_goals_conceded', 'away_team_goals_conceded',
+                'home_team_wins', 'away_team_wins',
+                'home_team_draws', 'away_team_draws',
+                'home_team_losses', 'away_team_losses',
+                'home_team_last_5_form', 'away_team_last_5_form',
+                'home_team_last_5_goals', 'away_team_last_5_goals'
             ]
             
             X = df[features].values
@@ -58,254 +64,97 @@ class TrainingService:
                 'mesaj': str(e)
             }
     
-    def train_model(self, csv_file=None):
-        """Modelleri eğitir"""
+    def train_model(self, matches_df):
+        """Modeli eğitir"""
         try:
-            # CSV dosyasını bul ve oku
-            if csv_file is None:
-                csv_files = [f for f in os.listdir(self.data_dir) if f.startswith('training_data_')]
-                if not csv_files:
-                    return {'durum': 'hata', 'mesaj': 'Eğitim verisi bulunamadı'}
-                csv_file = os.path.join(self.data_dir, sorted(csv_files)[-1])
+            print("\n[INFO] Model eğitimi başlıyor...")
             
-            df = pd.read_csv(csv_file)
-            print(f"[INFO] Toplam {len(df)} veri noktası yüklendi")
-            
-            # Temel özellikler
+            # Feature'ları ve target'ı ayır
             features = [
-                'home_team_form', 'home_team_goals_scored', 'home_team_goals_conceded',
-                'home_team_wins', 'home_team_draws', 'home_team_losses',
-                'away_team_form', 'away_team_goals_scored', 'away_team_goals_conceded',
-                'away_team_wins', 'away_team_draws', 'away_team_losses',
-                'home_team_last_5_form', 'home_team_last_5_goals',
-                'away_team_last_5_form', 'away_team_last_5_goals'
+                'home_team_form', 'away_team_form',
+                'home_team_goals_scored', 'away_team_goals_scored',
+                'home_team_goals_conceded', 'away_team_goals_conceded',
+                'home_team_wins', 'away_team_wins',
+                'home_team_draws', 'away_team_draws',
+                'home_team_losses', 'away_team_losses',
+                'home_team_last_5_form', 'away_team_last_5_form',
+                'home_team_last_5_goals', 'away_team_last_5_goals'
             ]
             
-            # Basit ve etkili özellikler ekle
-            df['home_win_rate'] = df['home_team_wins'] / (df['home_team_wins'] + df['home_team_draws'] + df['home_team_losses']).clip(lower=1)
-            df['away_win_rate'] = df['away_team_wins'] / (df['away_team_wins'] + df['away_team_draws'] + df['away_team_losses']).clip(lower=1)
-            df['home_goals_per_game'] = df['home_team_goals_scored'] / (df['home_team_wins'] + df['home_team_draws'] + df['home_team_losses']).clip(lower=1)
-            df['away_goals_per_game'] = df['away_team_goals_scored'] / (df['away_team_wins'] + df['away_team_draws'] + df['away_team_losses']).clip(lower=1)
-            df['form_diff'] = df['home_team_form'] - df['away_team_form']
-            df['goals_diff'] = df['home_team_goals_scored'] - df['away_team_goals_scored']
-            
-            # Yeni özellikleri listeye ekle
-            features.extend([
-                'home_win_rate', 'away_win_rate',
-                'home_goals_per_game', 'away_goals_per_game',
-                'form_diff', 'goals_diff'
-            ])
-            
-            # Sınıf dengesizliğini kontrol et
-            print("\n[INFO] Sınıf dağılımı:")
-            print(df['result'].value_counts(normalize=True))
-            
-            # Ensemble modeller
-            models = {
-                'mac_sonucu': {
-                    'features': features,
-                    'target': 'result',
-                    'model': VotingClassifier(
-                        estimators=[
-                            ('xgb1', XGBClassifier(
-                                n_estimators=500,
-                                max_depth=6,
-                                learning_rate=0.05,
-                                subsample=0.8,
-                                colsample_bytree=0.8,
-                                min_child_weight=3,
-                                gamma=0.1,
-                                random_state=42
-                            )),
-                            ('xgb2', XGBClassifier(
-                                n_estimators=500,
-                                max_depth=4,
-                                learning_rate=0.1,
-                                subsample=0.9,
-                                colsample_bytree=0.9,
-                                min_child_weight=2,
-                                gamma=0.2,
-                                random_state=43
-                            )),
-                            ('xgb3', XGBClassifier(
-                                n_estimators=500,
-                                max_depth=5,
-                                learning_rate=0.075,
-                                subsample=0.85,
-                                colsample_bytree=0.85,
-                                min_child_weight=4,
-                                gamma=0.15,
-                                random_state=44
-                            )),
-                            ('lr', LogisticRegression(
-                                C=0.1,
-                                max_iter=2000,
-                                class_weight='balanced',
-                                random_state=42
-                            ))
-                        ],
-                        voting='soft',
-                        weights=[3, 2, 2, 1]  # XGBoost modellerine daha fazla ağırlık ver
-                    )
-                },
-                'kg_var': {
-                    'features': features,
-                    'target': 'both_scored',
-                    'model': VotingClassifier(
-                        estimators=[
-                            ('xgb1', XGBClassifier(
-                                n_estimators=200,
-                                max_depth=3,
-                                learning_rate=0.1,
-                                random_state=42
-                            )),
-                            ('xgb2', XGBClassifier(
-                                n_estimators=200,
-                                max_depth=5,
-                                learning_rate=0.05,
-                                random_state=43
-                            )),
-                            ('lr', LogisticRegression(
-                                C=0.1,
-                                max_iter=1000,
-                                random_state=42
-                            ))
-                        ],
-                        voting='soft'
-                    )
-                },
-                'ust_2_5': {
-                    'features': features,
-                    'target': 'over_25',
-                    'model': VotingClassifier(
-                        estimators=[
-                            ('xgb1', XGBClassifier(
-                                n_estimators=200,
-                                max_depth=3,
-                                learning_rate=0.1,
-                                random_state=42
-                            )),
-                            ('xgb2', XGBClassifier(
-                                n_estimators=200,
-                                max_depth=5,
-                                learning_rate=0.05,
-                                random_state=43
-                            )),
-                            ('lr', LogisticRegression(
-                                C=0.1,
-                                max_iter=1000,
-                                random_state=42
-                            ))
-                        ],
-                        voting='soft'
-                    )
+            # Eksik sütunları kontrol et
+            missing_columns = [col for col in features if col not in matches_df.columns]
+            if missing_columns:
+                print("\n[ERROR] Eksik sütunlar:", missing_columns)
+                print("\n[INFO] Mevcut sütunlar:", matches_df.columns.tolist())
+                return {
+                    'durum': 'hata',
+                    'mesaj': f'Eksik sütunlar: {", ".join(missing_columns)}'
                 }
-            }
             
-            # Feature engineering geliştirmeleri
-            df['recent_form_ratio'] = df['home_team_last_5_form'] / df['away_team_last_5_form']
-            df['goal_efficiency'] = (df['home_team_goals_scored'] / df['home_team_played']) / (df['away_team_goals_scored'] / df['away_team_played'])
-            df['defense_efficiency'] = (df['home_team_goals_conceded'] / df['home_team_played']) / (df['away_team_goals_conceded'] / df['away_team_played'])
-            df['win_rate_ratio'] = df['home_win_rate'] / df['away_win_rate']
+            X = matches_df[features]
+            y = matches_df['result']
             
-            # Sezon içi trend
-            df['home_trend'] = df['home_team_last_5_form'] - df['home_team_form']
-            df['away_trend'] = df['away_team_last_5_form'] - df['away_team_form']
+            # Benzersiz sınıf etiketlerini kontrol et
+            unique_classes = y.unique()
+            print("\n[INFO] Benzersiz sınıf etiketleri:", unique_classes)
             
-            # Yeni özellikleri listeye ekle
-            features.extend([
-                'recent_form_ratio', 'goal_efficiency', 'defense_efficiency',
-                'win_rate_ratio', 'home_trend', 'away_trend'
-            ])
+            # Veriyi eğitim ve test setlerine ayır
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             
-            # Model güven skorunu hesaplama fonksiyonunu güncelle
-            def calculate_confidence_score(probabilities, power_diff, form_diff):
-                max_prob = max(probabilities)
-                base_confidence = max_prob * 100
-                
-                # Güç ve form farklarına göre güven artışı
-                power_confidence = min(abs(power_diff) * 20, 15)  # Maksimum %15 artış
-                form_confidence = min(abs(form_diff) * 15, 10)    # Maksimum %10 artış
-                
-                # Eğer en yüksek olasılık belirli bir eşiğin üzerindeyse ek bonus
-                prob_bonus = 10 if max_prob > 0.6 else (5 if max_prob > 0.5 else 0)
-                
-                # Olasılıklar arasındaki fark ne kadar büyükse o kadar güvenilir
-                prob_diff = max_prob - sorted(probabilities)[-2]  # En yüksek ile ikinci en yüksek arasındaki fark
-                diff_bonus = min(prob_diff * 100 * 0.5, 10)  # Maksimum %10 bonus
-                
-                total_confidence = base_confidence + power_confidence + form_confidence + prob_bonus + diff_bonus
-                
-                # Maksimum %95 ile sınırla
-                return min(round(total_confidence), 95)
-                
-            # Model tahmininde güven skorunu güncelle
-            ml_guven = calculate_confidence_score(
-                probabilities,
-                power_diff,
-                form_diff
+            # Feature'ları ölçeklendir
+            scaler = StandardScaler()
+            X_train_scaled = scaler.fit_transform(X_train)
+            X_test_scaled = scaler.transform(X_test)
+            
+            # Sınıf ağırlıklarını hesapla
+            class_weights = compute_class_weight('balanced', classes=unique_classes, y=y_train)
+            class_weight_dict = dict(zip(unique_classes, class_weights))
+            
+            # Modeli oluştur ve eğit
+            model = RandomForestClassifier(
+                n_estimators=500,
+                max_depth=8,
+                min_samples_split=15,
+                min_samples_leaf=5,
+                max_features='sqrt',
+                bootstrap=True,
+                random_state=42,
+                class_weight=class_weight_dict,
+                n_jobs=-1
             )
             
-            # Her model için eğitim yap
-            results = {}
-            for model_name, model_info in models.items():
-                print(f"\n[INFO] {model_name} modeli eğitiliyor...")
-                
-                # Veriyi hazırla
-                X = df[model_info['features']]
-                y = df[model_info['target']]
-                
-                # Veriyi ölçeklendir
-                scaler = StandardScaler()
-                X_scaled = scaler.fit_transform(X)
-                
-                # Cross-validation ile model performansını değerlendir
-                cv_scores = cross_val_score(model_info['model'], X_scaled, y, cv=5)
-                print(f"[INFO] Cross-validation skorları: {cv_scores}")
-                print(f"[INFO] Ortalama CV skoru: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
-                
-                # Tüm veri setiyle modeli eğit
-                model = model_info['model']
-                model.fit(X_scaled, y)
-                
-                # Özellik önemliliklerini hesapla (sadece XGBoost modellerinden)
-                feature_importance = None
-                if model_name == 'mac_sonucu':
-                    # İlk XGBoost modelinden özellik önemliliklerini al
-                    xgb_model = model.named_estimators_['xgb1']
-                    feature_importance = pd.DataFrame({
-                        'feature': model_info['features'],
-                        'importance': xgb_model.feature_importances_
-                    }).sort_values('importance', ascending=False)
-                    
-                    print("\n[INFO] En önemli 10 özellik (XGBoost-1):")
-                    print(feature_importance.head(10))
-                
-                # Modeli kaydet
-                model_path = os.path.join(self.models_dir, f'{model_name}_model_{datetime.now().strftime("%Y%m%d_%H%M%S")}.joblib')
-                scaler_path = os.path.join(self.models_dir, f'{model_name}_scaler_{datetime.now().strftime("%Y%m%d_%H%M%S")}.joblib')
-                
-                joblib.dump(model, model_path)
-                joblib.dump(scaler, scaler_path)
-                
-                results[model_name] = {
-                    'dogruluk': cv_scores.mean(),
-                    'model_yolu': model_path,
-                    'scaler_yolu': scaler_path,
-                    'cv_skorlari': cv_scores.tolist(),
-                    'en_onemli_ozellikler': feature_importance.head(10).to_dict('records') if feature_importance is not None else None
-                }
+            model.fit(X_train_scaled, y_train)
+            
+            # Model performansını değerlendir
+            train_accuracy = model.score(X_train_scaled, y_train)
+            test_accuracy = model.score(X_test_scaled, y_test)
+            
+            # Özellik önemliliklerini hesapla
+            feature_importance = pd.DataFrame({
+                'feature': features,
+                'importance': model.feature_importances_
+            }).sort_values('importance', ascending=False)
+            
+            # Modeli ve scaler'ı kaydet
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            model_path = os.path.join(self.models_dir, f'model_{timestamp}.joblib')
+            scaler_path = os.path.join(self.models_dir, f'scaler_{timestamp}.joblib')
+            
+            joblib.dump(model, model_path)
+            joblib.dump(scaler, scaler_path)
             
             return {
                 'durum': 'basarili',
-                'sonuclar': results,
-                'veri_sayisi': len(df),
-                'egitim_tarihi': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                'dogruluk': results['mac_sonucu']['dogruluk']
+                'veri_sayisi': len(matches_df),
+                'egitim_dogrulugu': round(train_accuracy * 100, 2),
+                'test_dogrulugu': round(test_accuracy * 100, 2),
+                'en_onemli_ozellikler': feature_importance.to_dict('records'),
+                'egitim_tarihi': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
             
         except Exception as e:
             print(f"[ERROR] Model eğitim hatası: {str(e)}")
+            print("\n[INFO] Mevcut sütunlar:", matches_df.columns.tolist())
             return {
                 'durum': 'hata',
                 'mesaj': str(e)
@@ -331,18 +180,22 @@ class TrainingService:
             
             # Özellik vektörü oluştur
             features = [
-                home_team_stats.get('form', 0),
-                home_team_stats.get('atilan_goller', 0),
-                home_team_stats.get('yenilen_goller', 0),
-                home_team_stats.get('galibiyetler', 0),
-                home_team_stats.get('beraberlikler', 0),
-                home_team_stats.get('maglubiyetler', 0),
-                away_team_stats.get('form', 0),
-                away_team_stats.get('atilan_goller', 0),
-                away_team_stats.get('yenilen_goller', 0),
-                away_team_stats.get('galibiyetler', 0),
-                away_team_stats.get('beraberlikler', 0),
-                away_team_stats.get('maglubiyetler', 0)
+                home_team_stats.get('form', 0),  # home_team_form
+                away_team_stats.get('form', 0),  # away_team_form
+                home_team_stats.get('atilan_goller', 0),  # home_team_goals_scored
+                away_team_stats.get('atilan_goller', 0),  # away_team_goals_scored
+                home_team_stats.get('yenilen_goller', 0),  # home_team_goals_conceded
+                away_team_stats.get('yenilen_goller', 0),  # away_team_goals_conceded
+                home_team_stats.get('galibiyetler', 0),  # home_team_wins
+                away_team_stats.get('galibiyetler', 0),  # away_team_wins
+                home_team_stats.get('beraberlikler', 0),  # home_team_draws
+                away_team_stats.get('beraberlikler', 0),  # away_team_draws
+                home_team_stats.get('maglubiyetler', 0),  # home_team_losses
+                away_team_stats.get('maglubiyetler', 0),  # away_team_losses
+                home_team_stats.get('son_5_form', 0),  # home_team_last_5_form
+                away_team_stats.get('son_5_form', 0),  # away_team_last_5_form
+                home_team_stats.get('son_5_gol', 0),  # home_team_last_5_goals
+                away_team_stats.get('son_5_gol', 0)   # away_team_last_5_goals
             ]
             
             # Veriyi ölçeklendir ve tahmin yap
@@ -419,7 +272,7 @@ class TrainingService:
             # Her bir gol sayısı için olasılıkları hesapla (0'dan 5'e kadar)
             first_half_goal_probs = [poisson_prob(i, total_expected_goals) for i in range(6)]
             
-            # Alt/Üst olasılıklarını hesapla
+            # Alt/Üst olasılıkları hesapla
             first_half_probs['0.5 Alt'] = round(first_half_goal_probs[0] * 100)  # Sadece 0 gol
             first_half_probs['0.5 Üst'] = round((1 - first_half_goal_probs[0]) * 100)  # 1 veya daha fazla gol
             

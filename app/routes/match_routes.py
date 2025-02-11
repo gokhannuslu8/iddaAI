@@ -136,15 +136,45 @@ def collect_data():
 def train_model():
     """Modeli eğit"""
     try:
+        # Veri toplama servisi ile verileri hazırla
+        data_service = DataCollectionService()
+        matches_df = data_service.load_saved_data()
+        
+        if matches_df.empty:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Eğitim için veri bulunamadı'
+            }), 400
+            
+        print(f"\n[INFO] Toplam {len(matches_df)} veri noktası yüklendi")
+        print("\n[INFO] Sütunlar:", matches_df.columns.tolist())
+        
+        # Eğitim servisini başlat
         training_service = TrainingService()
-        result = training_service.train_model()
+        
+        # Modeli eğit
+        result = training_service.train_model(matches_df)
         
         if result['durum'] == 'basarili':
-            return jsonify(result), 200
+            return jsonify({
+                'durum': 'basarili',
+                'mesaj': 'Model başarıyla eğitildi',
+                'detaylar': {
+                    'veri_sayisi': result['veri_sayisi'],
+                    'egitim_dogrulugu': result['egitim_dogrulugu'],
+                    'test_dogrulugu': result['test_dogrulugu'],
+                    'en_onemli_ozellikler': result['en_onemli_ozellikler'][:5],
+                    'egitim_tarihi': result['egitim_tarihi']
+                }
+            }), 200
         else:
-            return jsonify(result), 400
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': result['mesaj']
+            }), 400
             
     except Exception as e:
+        print(f"[ERROR] Model eğitim hatası: {str(e)}")
         return jsonify({
             'durum': 'hata',
             'mesaj': str(e)
