@@ -8,6 +8,7 @@ from app.services.match_service import MatchService
 from app.services.training_service import TrainingService
 import os
 import pandas as pd
+import numpy as np
 
 bp = Blueprint('match', __name__)
 
@@ -47,6 +48,30 @@ def mac_tahmin():
         if prediction['durum'] == 'hata':
             return jsonify({'hata': prediction['mesaj']}), 500
             
+        # İlk yarı gol olasılıklarını kontrol et ve düzelt
+        if 'ilk_yari_detayli' in prediction['tahminler']:
+            first_half = prediction['tahminler']['ilk_yari_detayli']
+            expected_goals = first_half['beklenen_goller']
+            
+            # Poisson dağılımı ile olasılıkları yeniden hesapla
+            def poisson_prob(k, lambda_param):
+                return np.exp(-lambda_param) * (lambda_param**k) / np.math.factorial(k)
+            
+            # Her bir gol sayısı için olasılıkları hesapla (0'dan 5'e kadar)
+            goal_probs = [poisson_prob(i, expected_goals) for i in range(6)]
+            
+            # Olasılıkları güncelle
+            first_half['olasiliklar'] = {
+                '0.5 Alt': round(goal_probs[0] * 100),  # Sadece 0 gol
+                '0.5 Üst': round((1 - goal_probs[0]) * 100),  # 1 veya daha fazla gol
+                '1.5 Alt': round(sum(goal_probs[:2]) * 100),  # 0 ve 1 gol
+                '1.5 Üst': round((1 - sum(goal_probs[:2])) * 100),  # 2 veya daha fazla gol
+                '2.5 Alt': round(sum(goal_probs[:3]) * 100),  # 0, 1 ve 2 gol
+                '2.5 Üst': round((1 - sum(goal_probs[:3])) * 100)  # 3 veya daha fazla gol
+            }
+            
+            prediction['tahminler']['ilk_yari_detayli'] = first_half
+            
         response_data = {
             'durum': 'basarili',
             'takim1': {
@@ -59,36 +84,7 @@ def mac_tahmin():
                 'isim': takim2_adi,
                 'istatistikler': takim2_stats
             },
-            'tahminler': prediction['tahminler']  # Tüm tahminleri koru
-        }
-        
-        # Kombinasyon tahminlerini ekle
-        kombinasyonlar = prediction['tahminler']['kombinasyonlar']
-        response_data['tahminler']['kombinasyonlar'] = {
-            'en_yuksek_olasilikli': {
-                'tahmin1': {
-                    'secim': kombinasyonlar['en_yuksek_olasilikli']['tahmin1']['secim'],
-                    'oran': kombinasyonlar['en_yuksek_olasilikli']['tahmin1']['oran']
-                },
-                'tahmin2': {
-                    'secim': kombinasyonlar['en_yuksek_olasilikli']['tahmin2']['secim'],
-                    'oran': kombinasyonlar['en_yuksek_olasilikli']['tahmin2']['oran']
-                },
-                'kombinasyon_olasiligi': kombinasyonlar['en_yuksek_olasilikli']['kombinasyon_olasiligi'],
-                'aciklama': kombinasyonlar['en_yuksek_olasilikli']['aciklama']
-            },
-            'ust_kg_var': {
-                'tahmin1': {
-                    'secim': kombinasyonlar['ust_kg_var']['tahmin1']['secim'],
-                    'oran': kombinasyonlar['ust_kg_var']['tahmin1']['oran']
-                },
-                'tahmin2': {
-                    'secim': kombinasyonlar['ust_kg_var']['tahmin2']['secim'],
-                    'oran': kombinasyonlar['ust_kg_var']['tahmin2']['oran']
-                },
-                'kombinasyon_olasiligi': kombinasyonlar['ust_kg_var']['kombinasyon_olasiligi'],
-                'aciklama': kombinasyonlar['ust_kg_var']['aciklama']
-            }
+            'tahminler': prediction['tahminler']
         }
         
         return jsonify(response_data)
@@ -140,15 +136,45 @@ def collect_data():
 def train_model():
     """Modeli eğit"""
     try:
+        # Veri toplama servisi ile verileri hazırla
+        data_service = DataCollectionService()
+        matches_df = data_service.load_saved_data()
+        
+        if matches_df.empty:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Eğitim için veri bulunamadı'
+            }), 400
+            
+        print(f"\n[INFO] Toplam {len(matches_df)} veri noktası yüklendi")
+        print("\n[INFO] Sütunlar:", matches_df.columns.tolist())
+        
+        # Eğitim servisini başlat
         training_service = TrainingService()
-        result = training_service.train_model()
+        
+        # Modeli eğit
+        result = training_service.train_model(matches_df)
         
         if result['durum'] == 'basarili':
-            return jsonify(result), 200
+            return jsonify({
+                'durum': 'basarili',
+                'mesaj': 'Model başarıyla eğitildi',
+                'detaylar': {
+                    'veri_sayisi': result['veri_sayisi'],
+                    'egitim_dogrulugu': result['egitim_dogrulugu'],
+                    'test_dogrulugu': result['test_dogrulugu'],
+                    'en_onemli_ozellikler': result['en_onemli_ozellikler'][:5],
+                    'egitim_tarihi': result['egitim_tarihi']
+                }
+            }), 200
         else:
-            return jsonify(result), 400
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': result['mesaj']
+            }), 400
             
     except Exception as e:
+        print(f"[ERROR] Model eğitim hatası: {str(e)}")
         return jsonify({
             'durum': 'hata',
             'mesaj': str(e)

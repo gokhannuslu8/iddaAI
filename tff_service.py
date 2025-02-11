@@ -16,23 +16,38 @@ class TFFService:
             'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         }
         self.base_url = 'https://api-football-v1.p.rapidapi.com/v3'
-        self.league_id = 203  # Süper Lig ID'si
+        self.leagues = {
+            'super': 203,  # Süper Lig ID'si
+            'tff1': 204    # TFF 1. Lig ID'si
+        }
         
         # Retry stratejisi oluştur
         retry_strategy = Retry(
-            total=3,  # toplam deneme sayısı
-            backoff_factor=1,  # her denemede beklenecek süre
-            status_forcelist=[429, 500, 502, 503, 504]  # yeniden denenecek HTTP kodları
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504]
         )
         adapter = HTTPAdapter(max_retries=retry_strategy)
         self.session = requests.Session()
         self.session.mount("https://", adapter)
         self.session.mount("http://", adapter)
 
-    def get_standings(self, season):
+    def get_standings(self, season, league_type='super'):
+        """Puan durumunu çeker
+        
+        Args:
+            season: Sezon yılı (örn: 2024)
+            league_type: 'super' veya 'tff1'
+        """
         url = f"{self.base_url}/standings"
+        league_id = self.leagues.get(league_type)
+        
+        if not league_id:
+            print(f"Geçersiz lig tipi: {league_type}")
+            return pd.DataFrame()
+            
         params = {
-            'league': self.league_id,
+            'league': league_id,
             'season': season
         }
         
@@ -42,7 +57,7 @@ class TFFService:
             data = response.json()
             
             if not data['response']:
-                print(f"{season} sezonu için puan durumu verisi bulunamadı")
+                print(f"{season} sezonu için {league_type} puan durumu verisi bulunamadı")
                 return pd.DataFrame()
                 
             standings = data['response'][0]['league']['standings'][0]
@@ -58,10 +73,11 @@ class TFFService:
                     'drawn': team['all']['draw'],
                     'lost': team['all']['lose'],
                     'goals_for': team['all']['goals']['for'],
-                    'goals_against': team['all']['goals']['against']
+                    'goals_against': team['all']['goals']['against'],
+                    'league_type': league_type  # Hangi ligden olduğunu belirt
                 }
                 teams_data.append(team_data)
-                print(f"Takım verisi eklendi: {team_data['team']}")
+                print(f"Takım verisi eklendi: {team_data['team']} ({league_type})")
                 
             time.sleep(2)  # API rate limit için bekle
             return pd.DataFrame(teams_data)
@@ -70,11 +86,24 @@ class TFFService:
             print(f"Puan durumu verisi alınırken hata oluştu: {e}")
             return pd.DataFrame()
 
-    def get_matches(self, season):
+    def get_matches(self, season, league_type='super'):
+        """Maç verilerini çeker
+        
+        Args:
+            season: Sezon yılı (örn: 2024)
+            league_type: 'super' veya 'tff1'
+        """
         url = f"{self.base_url}/fixtures"
+        league_id = self.leagues.get(league_type)
+        
+        if not league_id:
+            print(f"Geçersiz lig tipi: {league_type}")
+            return pd.DataFrame()
+            
         params = {
-            'league': self.league_id,
-            'season': season
+            'league': league_id,
+            'season': season,
+            'status': 'FT'  # Sadece tamamlanmış maçları al
         }
         
         try:
@@ -83,7 +112,7 @@ class TFFService:
             data = response.json()
             
             if not data['response']:
-                print(f"{season} sezonu için maç verisi bulunamadı")
+                print(f"{season} sezonu için {league_type} maç verisi bulunamadı")
                 return pd.DataFrame()
                 
             matches_data = []
@@ -95,10 +124,11 @@ class TFFService:
                         'away_team': match['teams']['away']['name'],
                         'home_score': match['goals']['home'],
                         'away_score': match['goals']['away'],
-                        'result': 'H' if match['goals']['home'] > match['goals']['away'] else 'A' if match['goals']['home'] < match['goals']['away'] else 'D'
+                        'result': 'H' if match['goals']['home'] > match['goals']['away'] else 'A' if match['goals']['home'] < match['goals']['away'] else 'D',
+                        'league_type': league_type  # Hangi ligden olduğunu belirt
                     }
                     matches_data.append(match_data)
-                    print(f"Maç verisi eklendi: {match_data['home_team']} vs {match_data['away_team']}")
+                    print(f"Maç verisi eklendi: {match_data['home_team']} vs {match_data['away_team']} ({league_type})")
                     
             time.sleep(2)  # API rate limit için bekle
             return pd.DataFrame(matches_data)
