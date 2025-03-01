@@ -1,5 +1,6 @@
 from tff_service import TFFService
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
@@ -95,6 +96,13 @@ def train_model(matches):
     
     X = matches[features]
     y = matches['result']
+    
+    # NaN değerleri doldur
+    X = X.fillna(X.mean())
+    
+    # Sonsuz değerleri temizle
+    X = X.replace([np.inf, -np.inf], np.nan)
+    X = X.fillna(X.mean())
     
     # Veriyi eğitim ve test setlerine ayır
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

@@ -18,7 +18,7 @@ class Config:
     JSONIFY_MIMETYPE = "application/json;charset=utf-8"
     
     # API configs
-    FOOTBALL_API_KEY = ''
+    FOOTBALL_API_KEY = '785e862acd6d40b19ae59b974d0958cd'
     FOOTBALL_API_BASE_URL = 'http://api.football-data.org/v4'
     
     # ML model configs
