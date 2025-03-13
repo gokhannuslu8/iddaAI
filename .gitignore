@@ -29,6 +29,7 @@ wheels/
 
 # Proje özel
 config.py
+app/config/config.py
 .env
 *.env
 credentials.json

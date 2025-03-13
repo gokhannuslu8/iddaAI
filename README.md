@@ -22,15 +22,23 @@ source env/bin/activate  # Linux/Mac için
 pip install -r requirements.txt
 ```
 
-4. Konfigürasyon dosyasını hazırlayın:
+4. Konfigürasyon dosyalarını hazırlayın:
 ```bash
+# Ana konfigürasyon dosyası
 cp config.example.py config.py
+
+# API konfigürasyon dosyası
+cp app/config/config.example.py app/config/config.py
 ```
 
-5. `config.py` dosyasını düzenleyin:
-- `SECRET_KEY`: Güvenli bir rastgele anahtar oluşturun
-- `FOOTBALL_API_KEY`: [football-data.org](https://www.football-data.org/) üzerinden bir API anahtarı alın
-- Veritabanı bağlantı bilgilerini güncelleyin
+5. Konfigürasyon dosyalarını düzenleyin:
+- `config.py`:
+  - `SECRET_KEY`: Güvenli bir rastgele anahtar oluşturun
+  - `FOOTBALL_API_KEY`: [football-data.org](https://www.football-data.org/) üzerinden bir API anahtarı alın
+  - Veritabanı bağlantı bilgilerini güncelleyin
+
+- `app/config/config.py`:
+  - `API_KEY`: football-data.org API anahtarınızı ekleyin
 
 ## Çalıştırma
 
@@ -59,6 +67,7 @@ flask run
 
 Hassas bilgiler içeren dosyalar `.gitignore` dosyasına eklenmiştir:
 - `config.py`
+- `app/config/config.py`
 - `.env` dosyaları
 - API anahtarları
 - Model ve veri dosyaları
