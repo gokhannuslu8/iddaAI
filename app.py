@@ -3,6 +3,7 @@ from predict_matches import load_model_and_scaler, get_team_stats, predict_match
 from collect_tff_data import collect_data, train_model
 from tff_service import TFFService
 import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 
@@ -60,12 +61,106 @@ def predict():
         result = predict_match(model, scaler, standings, home_team, away_team)
         
         try:
-            # Sonuç başarılıysa ve prediction içinde ek_istatistikler varsa
+            # Sonuç başarılıysa ve prediction içinde skor_tahminleri varsa
             if result.get('success') and 'prediction' in result:
                 prediction = result['prediction']
                 
-                if 'ek_istatistikler' in prediction and 'ilk_yari_gol_analizi' in prediction['ek_istatistikler']:
-                    del prediction['ek_istatistikler']['ilk_yari_gol_analizi']
+                # Olası skorları hesapla
+                home_goals_avg = prediction['ev_sahibi_detay']['maç_başı_gol_ortalaması']
+                away_goals_avg = prediction['deplasman_detay']['maç_başı_gol_ortalaması']
+                home_conceded_avg = prediction['ev_sahibi_detay']['maç_başı_yenilen_gol_ortalaması']
+                away_conceded_avg = prediction['deplasman_detay']['maç_başı_yenilen_gol_ortalaması']
+                
+                # Ev sahibi avantajı
+                HOME_ADVANTAGE = 1.3
+                home_goals_avg *= HOME_ADVANTAGE
+                
+                # Form etkisi (son maçlardaki galibiyet oranı)
+                home_wins = int(prediction['ev_sahibi_form'].split(': ')[1].split(',')[0])
+                away_wins = int(prediction['deplasman_form'].split(': ')[1].split(',')[0])
+                home_form = home_wins / 5  # Son 5 maçtaki galibiyet oranı
+                away_form = away_wins / 5
+                
+                # Form etkisini uygula
+                home_goals_avg *= (0.8 + home_form * 0.4)  # Maksimum %40 etki
+                away_goals_avg *= (0.8 + away_form * 0.4)
+                
+                # Savunma faktörünü hesaba kat
+                defense_factor_home = away_conceded_avg / 1.5  # 1.5 ortalama lig gol sayısı
+                defense_factor_away = home_conceded_avg / 1.5
+                
+                # Gol beklentilerini güncelle
+                home_expected = home_goals_avg * defense_factor_away
+                away_expected = away_goals_avg * defense_factor_home
+                
+                # Poisson dağılımı kullanarak skor olasılıklarını hesapla
+                muhtemel_skorlar = []
+                for home_goals in range(5):  # 0-4 gol arası
+                    for away_goals in range(5):  # 0-4 gol arası
+                        # Her bir takımın gol atma olasılığını hesapla
+                        home_prob = np.exp(-home_expected) * (home_expected ** home_goals) / np.math.factorial(home_goals)
+                        away_prob = np.exp(-away_expected) * (away_expected ** away_goals) / np.math.factorial(away_goals)
+                        
+                        # Toplam olasılığı hesapla
+                        total_prob = home_prob * away_prob * 100
+                        
+                        # Mantıksız skorları filtrele
+                        if abs(home_goals - away_goals) <= 3:  # 3'ten fazla fark olan skorları azalt
+                            skor_mantikli = True
+                        else:
+                            skor_mantikli = False
+                            total_prob *= 0.3  # Olasılığı %70 azalt
+                        
+                        # Beraberlik düzeltmesi
+                        if home_goals == away_goals:
+                            if abs(home_expected - away_expected) < 0.5:  # Takımlar dengeli ise
+                                total_prob *= 1.2  # Beraberlik olasılığını %20 artır
+                            else:
+                                total_prob *= 0.8  # Beraberlik olasılığını %20 azalt
+                        
+                        muhtemel_skorlar.append({
+                            'skor': f"{home_goals}-{away_goals}",
+                            'oran': round(total_prob, 1),
+                            'mantikli': skor_mantikli
+                        })
+                
+                # Skorları olasılıklarına göre sırala
+                muhtemel_skorlar.sort(key=lambda x: (x['mantikli'], x['oran']), reverse=True)
+                
+                # En olası 5 skoru al
+                en_olasi_skorlar = muhtemel_skorlar[:5]
+                
+                # Oranları normalize et (toplam 100 olacak şekilde)
+                toplam_oran = sum(skor['oran'] for skor in en_olasi_skorlar)
+                for skor in en_olasi_skorlar:
+                    skor['oran'] = round((skor['oran'] / toplam_oran) * 100)
+                    del skor['mantikli']  # mantikli anahtarını kaldır
+                
+                # Son kontrol - toplamın tam 100 olmasını sağla
+                toplam = sum(skor['oran'] for skor in en_olasi_skorlar)
+                if toplam != 100:
+                    # Farkı en yüksek olasılığa ekle
+                    fark = 100 - toplam
+                    en_olasi_skorlar[0]['oran'] += fark
+                
+                # Yanıt formatını düzenle
+                response = {
+                    'success': True,
+                    'match': f"{home_team} vs {away_team}",
+                    'prediction': {
+                        'ev_sahibi_detay': prediction['ev_sahibi_detay'],
+                        'deplasman_detay': prediction['deplasman_detay'],
+                        'ev_sahibi_form': prediction['ev_sahibi_form'],
+                        'deplasman_form': prediction['deplasman_form'],
+                        'skor_tahminleri': en_olasi_skorlar,
+                        'tahmin': prediction['tahmin'],
+                        'olasiliklar': prediction['olasiliklar'],
+                        'gol_sinirlari': prediction['gol_sinirlari'],
+                        'ilk_yari_gol_analizi': prediction['ilk_yari_gol_analizi'],
+                        'toplam_gol_analizi': prediction.get('toplam_gol_analizi', {}),
+                        'ek_istatistikler': prediction['ek_istatistikler']
+                    }
+                }
                 
                 # Toplam gol analizi ekle
                 if all(key in prediction for key in ['gol_sinirlari', 'ev_sahibi_detay', 'deplasman_detay']):
@@ -108,7 +203,7 @@ def predict():
                     dep_gol_ort = dep_detay.get('maç_başı_gol_ortalaması', 0)
                     dep_yenilen_ort = dep_detay.get('maç_başı_yenilen_gol_ortalaması', 0)
                     
-                    prediction['toplam_gol_analizi'] = {
+                    response['prediction']['toplam_gol_analizi'] = {
                         'beklenen_gol_araligi': {
                             aralik: {
                                 'oran': oran,
@@ -141,17 +236,18 @@ def predict():
                     }
                     
                     # En olası gol aralığını hesapla
-                    gol_araliklari = prediction['toplam_gol_analizi']['beklenen_gol_araligi']
+                    gol_araliklari = response['prediction']['toplam_gol_analizi']['beklenen_gol_araligi']
                     en_olasi_aralik = max(gol_araliklari.items(), key=lambda x: x[1]['oran'])[0]
-                    prediction['toplam_gol_analizi']['en_olasilik_gol_araligi'] = en_olasi_aralik
-        
-        except Exception as e:
-            print(f"Toplam gol analizi hesaplama hatası: {str(e)}")
-            # Hata durumunda mevcut result'ı değiştirmeden devam et
-            pass
+                    response['prediction']['toplam_gol_analizi']['en_olasilik_gol_araligi'] = en_olasi_aralik
+                
+                return jsonify(response)
             
-        return jsonify(result)
-        
+            return jsonify(result)
+            
+        except Exception as e:
+            print(f"Yanıt formatı düzenleme hatası: {str(e)}")
+            return jsonify(result)
+            
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
 
