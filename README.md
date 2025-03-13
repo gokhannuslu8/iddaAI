@@ -1,34 +1,20 @@
-# İddaAI
+# İddaa Tahmin Uygulaması
 
-İddaAI, spor bahislerinde yapay zeka destekli bir tahmin platformudur. Makine öğrenimi algoritmalarıyla geçmiş maç verilerini analiz ederek sonuçları tahmin eder ve veri odaklı içgörüler sunar. Kullanıcıların yalnızca şansa değil, güvenilir verilere dayalı kararlar almasını sağlar.
+Bu uygulama, futbol maçları için tahmin ve analiz yapan bir API servisidir.
 
 ## Kurulum
 
-### Gereksinimler
-
-- Python 3.8 veya üzeri
-- pip (Python paket yöneticisi)
-
-### Adım Adım Kurulum
-
 1. Projeyi klonlayın:
 ```bash
-git clone https://github.com/kullaniciadi/iddaAI.git
+git clone https://github.com/yourusername/iddaAI.git
 cd iddaAI
 ```
 
-2. Sanal ortam oluşturun ve aktif edin:
-
-Windows için:
+2. Python sanal ortamı oluşturun ve aktifleştirin:
 ```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-Linux/Mac için:
-```bash
-python -m venv venv
-source venv/bin/activate
+python -m venv env
+source env/bin/activate  # Linux/Mac için
+.\env\Scripts\activate   # Windows için
 ```
 
 3. Gerekli paketleri yükleyin:
@@ -36,48 +22,52 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Çevre değişkenlerini ayarlayın:
-- `.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
-```
-FOOTBALL_API_KEY=your_api_key_here
-FOOTBALL_API_BASE_URL=https://api.football-data.org/v4
-```
-
-5. Uygulamayı çalıştırın:
+4. Konfigürasyon dosyasını hazırlayın:
 ```bash
-python run.py
+cp config.example.py config.py
 ```
 
-Uygulama varsayılan olarak http://localhost:5000 adresinde çalışacaktır.
+5. `config.py` dosyasını düzenleyin:
+- `SECRET_KEY`: Güvenli bir rastgele anahtar oluşturun
+- `FOOTBALL_API_KEY`: [football-data.org](https://www.football-data.org/) üzerinden bir API anahtarı alın
+- Veritabanı bağlantı bilgilerini güncelleyin
+
+## Çalıştırma
+
+Geliştirme modunda çalıştırmak için:
+```bash
+flask run
+```
+
+Üretim modunda çalıştırmak için:
+```bash
+export FLASK_ENV=production  # Linux/Mac için
+set FLASK_ENV=production    # Windows için
+flask run
+```
 
 ## API Endpointleri
 
-- `GET /gunun-kuponu`: Günün maç tahminlerini getirir
-- `GET /mac/tahmin`: Belirli bir maç için tahmin yapar
+- `POST /mac/tahmin`: Maç tahmini yapar
+- `GET /erisilen-takimlar`: Erişilebilir takımları listeler
+- `GET /gunun-maclari`: Günün maçlarını listeler
+- `POST /model/veri-topla`: Model için veri toplar
+- `POST /model/egit`: Modeli eğitir
 - `GET /model/durum`: Model durumunu kontrol eder
-- `POST /model/egit`: Modeli yeniden eğitir
 
-## Geliştirme
+## Güvenlik
 
-1. Geliştirme için sanal ortamı aktif edin:
-```bash
-venv\Scripts\activate  # Windows için
-source venv/bin/activate  # Linux/Mac için
-```
-
-2. Debug modunda çalıştırın:
-```bash
-python run.py --debug
-```
-
-## Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
+Hassas bilgiler içeren dosyalar `.gitignore` dosyasına eklenmiştir:
+- `config.py`
+- `.env` dosyaları
+- API anahtarları
+- Model ve veri dosyaları
+- Log dosyaları
 
 ## Katkıda Bulunma
 
-1. Bu depoyu fork edin
-2. Feature branch'i oluşturun (`git checkout -b feature/AmazingFeature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
-4. Branch'e push edin (`git push origin feature/AmazingFeature`)
+1. Bu repoyu fork edin
+2. Yeni bir branch oluşturun (`git checkout -b feature/yeniOzellik`)
+3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik: X'`)
+4. Branch'inizi push edin (`git push origin feature/yeniOzellik`)
 5. Pull Request oluşturun
