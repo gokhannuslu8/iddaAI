@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 import time
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util.retry import Retry
 
 class TFFService:
     def __init__(self):
