@@ -14,7 +14,7 @@ cd iddaAI
 ```bash
 python -m venv env
 source env/bin/activate  # Linux/Mac için
-.\env\Scripts\activate   # Windows için
+venv/Scripts/activate   # Windows için
 ```
 
 3. Gerekli paketleri yükleyin:

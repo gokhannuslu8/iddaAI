@@ -204,7 +204,7 @@ class DataCollectionService:
         except Exception as e:
             print(f"Veri birleştirme hatası: {str(e)}")
             return pd.DataFrame()
-
+        
     def load_saved_data(self):
         """Kaydedilmiş veriyi yükler"""
         try:
