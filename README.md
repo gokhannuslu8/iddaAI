@@ -42,26 +42,66 @@ cp app/config/config.example.py app/config/config.py
 
 ## Çalıştırma
 
-Geliştirme modunda çalıştırmak için:
-```bash
-flask run
-```
+- Türk takımları için tahmin yapmak istiyorsanız:
+  ```bash
+  python app.py
+  ```
+  Uygulama http://localhost:5000/api/predict endpointiyle çalışır.
 
-Üretim modunda çalıştırmak için:
-```bash
-export FLASK_ENV=production  # Linux/Mac için
-set FLASK_ENV=production    # Windows için
-flask run
-```
+- Avrupa ve yabancı takımlar için tahmin yapmak istiyorsanız:
+  ```bash
+  python run.py
+  ```
+  Uygulama /mac/tahmin endpointiyle çalışır.
 
 ## API Endpointleri
 
-- `POST /mac/tahmin`: Maç tahmini yapar
-- `GET /erisilen-takimlar`: Erişilebilir takımları listeler
-- `GET /gunun-maclari`: Günün maçlarını listeler
-- `POST /model/veri-topla`: Model için veri toplar
-- `POST /model/egit`: Modeli eğitir
-- `GET /model/durum`: Model durumunu kontrol eder
+- `POST /mac/tahmin`:
+  Türk olmayan (Avrupa ligleri ve diğer yabancı takımlar) için iki takım adı gönderilerek skor ve istatistik tahmini yapılır.
+  
+  **Body:**
+  ```json
+  {
+    "takım1": "Barcelona",
+    "takım2": "Real Madrid"
+  }
+  ```
+  **Dönüş:** Skor tahminleri, gol aralıkları, olasılıklar ve detaylı analiz.
+
+- `POST /api/predict`:
+  Türk takımları için maç tahmini yapılır. Yine iki takım adı gönderilir.
+  
+  **Body:**
+  ```json
+  {
+    "takım1": "Galatasaray",
+    "takım2": "Fenerbahçe"
+  }
+  ```
+  **Dönüş:** Skor tahminleri, gol aralıkları, olasılıklar ve detaylı analiz.
+
+- `GET /erisilen-takimlar`:
+  API ile tahmin yapılabilen ve istatistikleri erişilebilen tüm takımları ve liglerini listeler.
+
+- `GET /gunun-maclari`:
+  Bugünün (veya istenirse belirli bir tarihin) oynanacak maçlarını ve temel bilgilerini listeler.
+
+- `POST /model/veri-topla`:
+  Modelin eğitimi için geçmiş maç verilerini toplar.
+  
+  **Body (opsiyonel):**
+  ```json
+  { "days": 30 }
+  ```
+  **Dönüş:** Toplanan veri sayısı ve özet.
+
+- `POST /model/egit`:
+  Toplanan verilerle makine öğrenmesi modelini eğitir.
+  
+  **Dönüş:** Eğitim başarısı, doğruluk oranları ve önemli özellikler.
+
+- `GET /model/durum`:
+  Modelin mevcut durumunu, son eğitim tarihini ve model dosyası bilgilerini döndürür.
 
 ## Güvenlik
 
