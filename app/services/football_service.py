@@ -381,18 +381,86 @@ class FootballService:
     def get_team_stats(self, team_id):
         """Takım istatistiklerini API'den alır"""
         try:
-            url = f"{self.base_url}/teams/{team_id}/matches"
-            params = {
-                'status': 'FINISHED',
-                'limit': 20  # Son 20 maç
-            }
+            # Önce takım bilgilerini al
+            team_url = f"{self.base_url}/teams/{team_id}"
+            team_response = requests.get(team_url, headers=self.get_headers())
             
-            response = requests.get(url, headers=self.get_headers(), params=params)
-            
-            if response.status_code != 200:
+            if team_response.status_code != 200:
+                print(f"[ERROR] Takım bilgisi alınamadı: {team_response.status_code}")
                 return None
             
-            matches = response.json().get('matches', [])
+            team_data = team_response.json()
+            team_name = team_data.get('name', '')
+            print(f"[DEBUG] Takım adı: {team_name}")
+            
+                        # Lig maçlarından takım verilerini çıkar
+            matches = []
+            # Takımın ligini belirle
+            from app.utils.helpers import get_team_league
+            
+            team_league_name = get_team_league(team_name)
+            league_id_mapping = {
+                "Premier League": 2021,
+                "Bundesliga": 2002,
+                "La Liga": 2014,
+                "Ligue 1": 2015,
+                "Serie A": 2019,
+                "Eredivisie": 2003,
+                "Primeira Liga": 2017,
+                "Championship": 2016
+            }
+            
+            team_league = league_id_mapping.get(team_league_name, 2021)  # Varsayılan: Premier League
+            if team_league_name == "Diğer":
+                print(f"[WARNING] {team_name} takımı için lig bulunamadı, Premier League kullanılıyor")
+            else:
+                print(f"[INFO] {team_name} takımı {team_league_name} liginde (ID: {team_league})")
+            
+            matches = []
+            url = f"{self.base_url}/competitions/{team_league}/matches"
+            params = {
+                'status': 'FINISHED'
+            }
+            
+            print(f"[DEBUG] Lig {team_league} maçları alınıyor...")
+            response = requests.get(url, headers=self.get_headers(), params=params)
+            
+            if response.status_code == 200:
+                league_matches = response.json().get('matches', [])
+                # Takımın maçlarını filtrele (takım ID'si ile)
+                team_matches = [m for m in league_matches if 
+                              m.get('homeTeam', {}).get('id') == team_id or 
+                              m.get('awayTeam', {}).get('id') == team_id]
+                matches.extend(team_matches)
+                print(f"[DEBUG] Lig {team_league} için {len(team_matches)} maç bulundu")
+            elif response.status_code == 429:
+                print(f"[ERROR] Rate limit aşıldı. {response.json().get('message', '')}")
+                # Rate limit durumunda 10 saniye bekle ve tekrar dene
+                import time
+                time.sleep(10)
+                print("[INFO] 10 saniye bekledikten sonra tekrar deneniyor...")
+                response = requests.get(url, headers=self.get_headers(), params=params)
+                if response.status_code == 200:
+                    league_matches = response.json().get('matches', [])
+                    team_matches = [m for m in league_matches if 
+                                  m.get('homeTeam', {}).get('id') == team_id or 
+                                  m.get('awayTeam', {}).get('id') == team_id]
+                    matches.extend(team_matches)
+                    print(f"[DEBUG] Lig {team_league} için {len(team_matches)} maç bulundu (ikinci deneme)")
+                else:
+                    print(f"[ERROR] İkinci deneme de başarısız: {response.status_code}")
+            else:
+                print(f"[ERROR] Lig {team_league} için API hatası: {response.status_code}")
+            
+            # Rate limit'i önlemek için uzun bekleme
+            import time
+            time.sleep(3)  # 3 saniye bekleme
+            
+            print(f"[DEBUG] Toplam {len(matches)} maç bulundu")
+            
+            print(f"[DEBUG] API'den gelen maç sayısı: {len(matches)}")
+            if len(matches) > 0:
+                print(f"[DEBUG] İlk maç örneği: {matches[0]}")
             
             stats = {
                 'form': 0,
