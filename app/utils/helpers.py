@@ -169,7 +169,53 @@ TEAM_ID_MAPPING = {
     "Wrexham AFC": 404,
     "Coventry City FC": 1076,
     "Preston North End FC": 1081,
-    "Oxford United FC": 1082
+    "Oxford United FC": 1082,
+
+    # UEFA Champions League (2024-25) - Benzersiz ID'ler
+    "Galatasaray SK": 2001,  # Türkiye
+    "Fenerbahçe SK": 2002,   # Türkiye
+    "Real Madrid CF": 86,  # İspanya
+    "FC Barcelona": 81,    # İspanya
+    "Club Atlético de Madrid": 78,  # İspanya
+    "Real Sociedad de Fútbol": 92,  # İspanya
+    "Girona FC": 298,      # İspanya
+    "Manchester City FC": 65,  # İngiltere
+    "Arsenal FC": 57,      # İngiltere
+    "Liverpool FC": 64,    # İngiltere
+    "Aston Villa FC": 58,  # İngiltere
+    "FC Bayern München": 5,  # Almanya
+    "Bayer 04 Leverkusen": 3,  # Almanya
+    "VfB Stuttgart": 10,   # Almanya
+    "RB Leipzig": 721,     # Almanya
+    "Borussia Dortmund": 4,  # Almanya
+    "Eintracht Frankfurt": 19,  # Almanya
+    "AC Milan": 98,        # İtalya
+    "FC Internazionale Milano": 108,  # İtalya
+    "Juventus FC": 109,    # İtalya
+    "Atalanta BC": 102,    # İtalya
+    "Bologna FC 1909": 103,  # İtalya
+    "Paris Saint-Germain FC": 524,  # Fransa
+    "AS Monaco FC": 548,   # Fransa
+    "Lille OSC": 521,      # Fransa
+    "Stade Brestois 29": 512,  # Fransa
+    "PSV": 674,            # Hollanda
+    "Feyenoord Rotterdam": 675,  # Hollanda
+    "AFC Ajax": 678,       # Hollanda
+    "Sporting Clube de Portugal": 498,  # Portekiz
+    "Sport Lisboa e Benfica": 1903,  # Portekiz
+    "FC Porto": 503,       # Portekiz
+    "Sporting Clube de Braga": 5613,  # Portekiz
+    "Celtic FC": 1003,     # İskoçya
+    "Rangers FC": 1004,    # İskoçya
+    "Club Brugge KV": 1005,  # Belçika
+    "Union Saint-Gilloise": 1006,  # Belçika
+    "Bodo/Glimt": 2007,    # Norveç
+    "Shakhtar Donetsk": 1008,  # Ukrayna
+    "Dinamo Zagreb": 1009,  # Hırvatistan
+    "Red Bull Salzburg": 1010,  # Avusturya
+    "FC Copenhagen": 1011,  # Danimarka
+    "Young Boys": 1012,   # İsviçre
+    "Slavia Praha": 1013  # Çek Cumhuriyeti
 }
 
 def get_team_id(team_name):
@@ -321,6 +367,17 @@ def get_team_league(team_name):
             "Southampton FC", "Derby County FC", "Middlesbrough FC", "Sheffield Wednesday FC", "Watford FC",
             "Charlton Athletic FC", "Ipswich Town FC", "Sheffield United FC", "Millwall FC", "Bristol City FC",
             "Wrexham AFC", "Coventry City FC", "Preston North End FC", "Oxford United FC"
+        ],
+        "UEFA Champions League": [
+            "Galatasaray SK", "Fenerbahçe SK", "Real Madrid CF", "FC Barcelona", "Club Atlético de Madrid",
+            "Real Sociedad de Fútbol", "Girona FC", "Manchester City FC", "Arsenal FC", "Liverpool FC",
+            "Aston Villa FC", "FC Bayern München", "Bayer 04 Leverkusen", "VfB Stuttgart", "RB Leipzig",
+            "Borussia Dortmund", "Eintracht Frankfurt", "AC Milan", "FC Internazionale Milano", "Juventus FC",
+            "Atalanta BC", "Bologna FC 1909", "Paris Saint-Germain FC", "AS Monaco FC", "Lille OSC",
+            "Stade Brestois 29", "PSV", "Feyenoord Rotterdam", "AFC Ajax", "Sporting Clube de Portugal",
+            "Sport Lisboa e Benfica", "FC Porto", "Sporting Clube de Braga", "Celtic FC", "Rangers FC",
+            "Club Brugge KV", "Union Saint-Gilloise", "Bodo/Glimt", "Shakhtar Donetsk", "Dinamo Zagreb",
+            "Red Bull Salzburg", "FC Copenhagen", "Young Boys", "Slavia Praha"
         ]
     }
     

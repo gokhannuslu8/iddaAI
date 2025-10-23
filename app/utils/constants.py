@@ -141,5 +141,51 @@ TEAM_ID_TO_LEAGUE = {
 
     # Brasileirão Takımları
     1777: "BSA", # Athletico-PR
-    1779: "BSA"  # Cuiabá
+    1779: "BSA", # Cuiabá
+
+    # UEFA Champions League Takımları (2024-25) - Benzersiz ID'ler
+    2001: "CL", # Galatasaray SK
+    2002: "CL", # Fenerbahçe SK
+    86: "CL",   # Real Madrid CF
+    81: "CL",   # FC Barcelona
+    78: "CL",   # Club Atlético de Madrid
+    92: "CL",   # Real Sociedad de Fútbol
+    298: "CL",  # Girona FC
+    65: "CL",   # Manchester City FC
+    57: "CL",   # Arsenal FC
+    64: "CL",   # Liverpool FC
+    58: "CL",   # Aston Villa FC
+    5: "CL",    # FC Bayern München
+    3: "CL",    # Bayer 04 Leverkusen
+    10: "CL",   # VfB Stuttgart
+    721: "CL",  # RB Leipzig
+    4: "CL",    # Borussia Dortmund
+    19: "CL",   # Eintracht Frankfurt
+    98: "CL",   # AC Milan
+    108: "CL",  # FC Internazionale Milano
+    109: "CL",  # Juventus FC
+    102: "CL",  # Atalanta BC
+    103: "CL",  # Bologna FC 1909
+    524: "CL",  # Paris Saint-Germain FC
+    548: "CL",  # AS Monaco FC
+    521: "CL",  # Lille OSC
+    512: "CL",  # Stade Brestois 29
+    674: "CL",  # PSV
+    675: "CL",  # Feyenoord Rotterdam
+    678: "CL",  # AFC Ajax
+    498: "CL",  # Sporting Clube de Portugal
+    1903: "CL", # Sport Lisboa e Benfica
+    503: "CL",  # FC Porto
+    5613: "CL", # Sporting Clube de Braga
+    1003: "CL", # Celtic FC
+    1004: "CL", # Rangers FC
+    1005: "CL", # Club Brugge KV
+    1006: "CL", # Union Saint-Gilloise
+    2007: "CL", # Bodo/Glimt
+    1008: "CL", # Shakhtar Donetsk
+    1009: "CL", # Dinamo Zagreb
+    1010: "CL", # Red Bull Salzburg
+    1011: "CL", # FC Copenhagen
+    1012: "CL", # Young Boys
+    1013: "CL"  # Slavia Praha
 } 

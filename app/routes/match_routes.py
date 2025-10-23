@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.services.football_service import FootballService
+from app.services.champions_league_service import ChampionsLeagueService
 from app.utils.helpers import TEAM_ID_MAPPING, get_team_id, get_team_league
 from datetime import datetime
 from app.services.data_collection_service import DataCollectionService
@@ -458,6 +459,145 @@ def get_all_teams():
         football_service = FootballService()
         result = football_service.get_all_teams()
         return jsonify(result)
+    except Exception as e:
+        return jsonify({
+            'durum': 'hata',
+            'mesaj': str(e)
+        }), 500
+
+# Şampiyonlar Ligi endpoint'leri
+@bp.route('/sampiyonlar-ligi/takimlar', methods=['GET'])
+def get_champions_league_teams():
+    """Şampiyonlar Ligi takımlarını getirir"""
+    try:
+        cl_service = ChampionsLeagueService()
+        teams = cl_service.get_champions_league_teams()
+        
+        if not teams:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Şampiyonlar Ligi takımları alınamadı'
+            }), 500
+        
+        # Takım bilgilerini düzenle
+        teams_info = []
+        for team in teams:
+            team_info = {
+                'id': team['id'],
+                'name': team['name'],
+                'short_name': team.get('shortName', team['name']),
+                'country': team['area']['name'],
+                'crest': team.get('crest', ''),
+                'founded': team.get('founded', ''),
+                'venue': team.get('venue', '')
+            }
+            teams_info.append(team_info)
+        
+        return jsonify({
+            'durum': 'basarili',
+            'takim_sayisi': len(teams_info),
+            'takimlar': teams_info
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'durum': 'hata',
+            'mesaj': str(e)
+        }), 500
+
+@bp.route('/sampiyonlar-ligi/maclar', methods=['GET'])
+def get_champions_league_matches():
+    """Şampiyonlar Ligi maçlarını getirir"""
+    try:
+        cl_service = ChampionsLeagueService()
+        
+        # Query parametrelerini al
+        days = request.args.get('days', 30, type=int)
+        season = request.args.get('season', None)
+        
+        if season:
+            matches_df = cl_service.get_champions_league_matches(season)
+        else:
+            matches_df = cl_service.collect_champions_league_data(days)
+        
+        if matches_df.empty:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Şampiyonlar Ligi maçları bulunamadı'
+            }), 404
+        
+        # DataFrame'i JSON'a çevir
+        matches = matches_df.to_dict('records')
+        
+        return jsonify({
+            'durum': 'basarili',
+            'mac_sayisi': len(matches),
+            'maclar': matches
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'durum': 'hata',
+            'mesaj': str(e)
+        }), 500
+
+@bp.route('/sampiyonlar-ligi/takim/<team_name>', methods=['GET'])
+def get_champions_league_team_stats(team_name):
+    """Belirli bir takımın Şampiyonlar Ligi istatistiklerini getirir"""
+    try:
+        cl_service = ChampionsLeagueService()
+        stats = cl_service.get_team_champions_league_stats(team_name)
+        
+        if not stats:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': f'{team_name} takımının Şampiyonlar Ligi istatistikleri alınamadı'
+            }), 404
+        
+        return jsonify({
+            'durum': 'basarili',
+            'takim': team_name,
+            'istatistikler': stats
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'durum': 'hata',
+            'mesaj': str(e)
+        }), 500
+
+@bp.route('/sampiyonlar-ligi/veri-topla', methods=['POST'])
+def collect_champions_league_data():
+    """Şampiyonlar Ligi verilerini toplar"""
+    try:
+        data = request.get_json()
+        days = data.get('days', 365)
+        
+        cl_service = ChampionsLeagueService()
+        matches_df = cl_service.collect_champions_league_data(days)
+        
+        if matches_df.empty:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Şampiyonlar Ligi verileri toplanamadı'
+            }), 500
+        
+        # Verileri kaydet
+        filename = cl_service.save_champions_league_data(matches_df)
+        
+        if filename:
+            return jsonify({
+                'durum': 'basarili',
+                'mesaj': f'{len(matches_df)} Şampiyonlar Ligi maçı toplandı ve kaydedildi',
+                'dosya': filename,
+                'mac_sayisi': len(matches_df)
+            })
+        else:
+            return jsonify({
+                'durum': 'hata',
+                'mesaj': 'Veriler kaydedilemedi'
+            }), 500
+        
     except Exception as e:
         return jsonify({
             'durum': 'hata',
