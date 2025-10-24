@@ -18,7 +18,7 @@ def get_team_stats():
     
     # Her iki lig için de takımları al
     for league_type in ['super', 'tff1']:
-        standings = tff.get_standings(2024, league_type)
+        standings = tff.get_standings(2025, league_type)
         if not standings.empty:
             all_standings = pd.concat([all_standings, standings], ignore_index=True)
     
@@ -58,7 +58,21 @@ def predict():
                 'error': 'Geçersiz takım ismi'
             })
         
-        result = predict_match(model, scaler, standings, home_team, away_team)
+        # Detaylı istatistikleri hesapla
+        from app.services.tff_service import TFFService
+        tff_service = TFFService()
+        
+        # Maç verilerini al
+        matches_super = tff_service.get_matches(2025, 'super')
+        matches_tff1 = tff_service.get_matches(2025, 'tff1')
+        all_matches = pd.concat([matches_super, matches_tff1], ignore_index=True)
+        
+        # Detaylı istatistikleri hesapla
+        detailed_stats = {}
+        for team in [home_team, away_team]:
+            detailed_stats[team] = tff_service.calculate_detailed_team_stats(team, all_matches)
+        
+        result = predict_match(model, scaler, standings, home_team, away_team, detailed_stats)
         
         try:
             # Sonuç başarılıysa ve prediction içinde skor_tahminleri varsa

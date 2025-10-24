@@ -23,8 +23,8 @@ def collect_data():
     tff = TFFService()
     all_matches = pd.DataFrame()
     
-    # 2022-2023, 2023-2024 ve 2024-2025 sezonları için veri toplama
-    seasons = [2022, 2023, 2024]
+    # 2023-2024, 2024-2025 ve 2025-2026 sezonları için veri toplama
+    seasons = [2023, 2024, 2025]
     leagues = ['super', 'tff1']  # Her iki lig için veri topla
     
     for season in seasons:

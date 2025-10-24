@@ -21,7 +21,7 @@ def get_team_stats():
     
     # Her iki lig için de takımları al
     for league_type in ['super', 'tff1']:
-        standings = tff.get_standings(2024, league_type)
+        standings = tff.get_standings(2025, league_type)
         if not standings.empty:
             all_standings = pd.concat([all_standings, standings], ignore_index=True)
     
@@ -252,7 +252,7 @@ def calculate_first_half_goals(home_stats, away_stats, model_prediction, is_diff
         }
     }
 
-def predict_match(model, scaler, standings, home_team, away_team):
+def predict_match(model, scaler, standings, home_team, away_team, detailed_stats=None):
     # İki takım için istatistikleri bul
     home_stats = standings[standings['team'] == home_team].iloc[0]
     away_stats = standings[standings['team'] == away_team].iloc[0]
@@ -260,7 +260,7 @@ def predict_match(model, scaler, standings, home_team, away_team):
     # Farklı liglerden olup olmadığını kontrol et
     is_different_leagues = home_stats['league_type'] != away_stats['league_type']
     
-    # Tahmin için özellikleri hazırla
+    # Model 16 özellik ile eğitilmiş, sadece temel özellikleri kullan
     features = pd.DataFrame({
         'home_rank': [home_stats['rank']],
         'away_rank': [away_stats['rank']],
@@ -279,6 +279,14 @@ def predict_match(model, scaler, standings, home_team, away_team):
         'home_goals_against': [home_stats['goals_against']],
         'away_goals_against': [away_stats['goals_against']]
     })
+    
+    # Detaylı istatistikleri ek hesaplamalar için sakla
+    detailed_stats_for_calc = {}
+    if detailed_stats:
+        detailed_stats_for_calc = {
+            'home': detailed_stats.get(home_team, {}),
+            'away': detailed_stats.get(away_team, {})
+        }
     
     # Özellikleri ölçeklendir
     features_scaled = scaler.transform(features)
@@ -405,13 +413,72 @@ def predict_match(model, scaler, standings, home_team, away_team):
     # Karşılıklı gol olasılıklarını hesapla
     btts_probs = calculate_btts_probability(home_stats, away_stats, is_different_leagues)
     
+    # Takım detay istatistikleri
+    home_team_stats = {
+        'gol_attığı': int(home_stats['goals_for']),
+        'gol_yediği': int(home_stats['goals_against']),
+        'maç_başı_gol_ortalaması': float(round(home_stats['goals_for'] / home_stats['played'], 2)),
+        'maç_başı_yenilen_gol_ortalaması': float(round(home_stats['goals_against'] / home_stats['played'], 2)),
+        'puan': int(home_stats['points']),
+        'sıralama': int(home_stats['rank'])
+    }
+    
+    away_team_stats = {
+        'gol_attığı': int(away_stats['goals_for']),
+        'gol_yediği': int(away_stats['goals_against']),
+        'maç_başı_gol_ortalaması': float(round(away_stats['goals_for'] / away_stats['played'], 2)),
+        'maç_başı_yenilen_gol_ortalaması': float(round(away_stats['goals_against'] / away_stats['played'], 2)),
+        'puan': int(away_stats['points']),
+        'sıralama': int(away_stats['rank'])
+    }
+    
+    # Detaylı istatistikleri ek hesaplamalarda kullan
+    enhanced_stats = {}
+    if detailed_stats_for_calc:
+        home_detailed = detailed_stats_for_calc.get('home', {})
+        away_detailed = detailed_stats_for_calc.get('away', {})
+        
+        # Güç hesaplamasını detaylı istatistiklerle geliştir
+        home_detailed_power = home_power
+        away_detailed_power = away_power
+        
+        # Form etkisi
+        home_form = home_detailed.get('form', 0) / 100
+        away_form = away_detailed.get('form', 0) / 100
+        home_detailed_power *= (0.8 + home_form * 0.4)
+        away_detailed_power *= (0.8 + away_form * 0.4)
+        
+        # Seri etkisi
+        home_win_streak = home_detailed.get('galibiyet_serisi', 0)
+        away_win_streak = away_detailed.get('galibiyet_serisi', 0)
+        home_detailed_power *= (1 + home_win_streak * 0.05)
+        away_detailed_power *= (1 + away_win_streak * 0.05)
+        
+        # Mağlubiyetsiz seri etkisi
+        home_unbeaten = home_detailed.get('maglubiyetsiz_mac', 0)
+        away_unbeaten = away_detailed.get('maglubiyetsiz_mac', 0)
+        home_detailed_power *= (1 + home_unbeaten * 0.03)
+        away_detailed_power *= (1 + away_unbeaten * 0.03)
+        
+        enhanced_stats = {
+            'home_detailed_power': float(home_detailed_power),
+            'away_detailed_power': float(away_detailed_power),
+            'home_form': float(home_form),
+            'away_form': float(away_form),
+            'home_win_streak': int(home_win_streak),
+            'away_win_streak': int(away_win_streak),
+            'home_unbeaten': int(home_unbeaten),
+            'away_unbeaten': int(away_unbeaten)
+        }
+    
     # Ek istatistikleri hazırla
     additional_stats = {
-        'ml_guven': round(max(model_probabilities) * 100),
+        'ml_guven': int(round(max(model_probabilities) * 100)),
         'ml_kullanildi': True,
         'ilk_yari_gol_analizi': first_half_goals,
-        'farkli_lig_karsilasmasi': is_different_leagues,
-        'karsilikli_gol': btts_probs
+        'farkli_lig_karsilasmasi': bool(is_different_leagues),
+        'karsilikli_gol': btts_probs,
+        'detayli_istatistikler': enhanced_stats
     }
     
     prediction_result = {
