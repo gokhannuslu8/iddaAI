@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from predict_matches import load_model_and_scaler, get_team_stats, predict_match
-from collect_tff_data import collect_data, train_model
+from scripts.predict_matches import load_model_and_scaler, get_team_stats, predict_match
+from scripts.collect_tff_data import collect_data, train_model
 from tff_service import TFFService
 import pandas as pd
 import numpy as np
@@ -9,6 +9,8 @@ app = Flask(__name__)
 
 # Model ve scaler'ı global olarak yükle
 model, scaler = load_model_and_scaler()
+if model is None or scaler is None:
+    print("UYARI: Model yüklenemedi! Tahmin yapılamayacak.")
 standings = get_team_stats()
 
 def get_team_stats():
@@ -41,6 +43,13 @@ def get_teams():
 @app.route('/api/predict', methods=['POST'])
 def predict():
     try:
+        # Model kontrolü
+        if model is None or scaler is None:
+            return jsonify({
+                'success': False,
+                'error': 'Model yüklenemedi. Lütfen model eğitimini çalıştırın.'
+            })
+        
         data = request.get_json()
         
         if not data or 'home_team' not in data or 'away_team' not in data:

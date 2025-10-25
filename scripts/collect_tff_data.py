@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tff_service import TFFService
 import pandas as pd
 import numpy as np
@@ -153,9 +156,13 @@ def train_model(matches):
     print("\nConfusion Matrix:")
     print(cm)
     
-    # Modeli ve scaler'ı sabit isimlerle kaydet
-    model_filename = "tff_model.joblib"
-    scaler_filename = "tff_scaler.joblib"
+    # Modeli ve scaler'ı models klasörüne kaydet
+    import os
+    models_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'models')
+    os.makedirs(models_dir, exist_ok=True)
+    
+    model_filename = os.path.join(models_dir, 'tff_model.joblib')
+    scaler_filename = os.path.join(models_dir, 'tff_scaler.joblib')
     
     joblib.dump(model, model_filename)
     joblib.dump(scaler, scaler_filename)

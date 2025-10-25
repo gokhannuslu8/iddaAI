@@ -1,14 +1,22 @@
 import joblib
 import pandas as pd
 import numpy as np
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tff_service import TFFService
 
 def load_model_and_scaler():
     """Model ve scaler'ı yükle"""
     try:
-        # Sabit dosya isimleri kullan
-        model = joblib.load('tff_model.joblib')
-        scaler = joblib.load('tff_scaler.joblib')
+        # Model dosyalarının yeni konumu
+        import os
+        models_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'models')
+        model_path = os.path.join(models_dir, 'tff_model.joblib')
+        scaler_path = os.path.join(models_dir, 'tff_scaler.joblib')
+        
+        model = joblib.load(model_path)
+        scaler = joblib.load(scaler_path)
         return model, scaler
     except Exception as e:
         print(f"Model yükleme hatası: {str(e)}")
